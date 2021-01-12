@@ -4,6 +4,8 @@ import com.dynamics.website.model.CodingUser;
 import com.dynamics.website.repository.CodingRepository;
 import com.dynamics.website.repository.RoboticsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +19,9 @@ import javax.validation.Valid;
 @RequestMapping("/dynamics/events/")
 public class CodingEventController {
     private final CodingRepository codingRepository;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Autowired
     public CodingEventController(CodingRepository codingRepository) {
@@ -34,6 +39,20 @@ public class CodingEventController {
             return "/dynamics/events";
         }
         codingRepository.save(codingUser);
-        return "redirect:coding";
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+
+        mailMessage.setFrom("dynamicsPOC19.sit@gmail.com");
+        mailMessage.setTo(codingUser.getEmail());
+
+        String mailSubject = codingUser.getEvent_name() + " Registration.";
+        String mailContent = "Thank You " + codingUser.getFirstName() + " for registering to " +
+                codingUser.getEvent_name()+".\nKeep in touch to know more updates.";
+        mailContent = mailContent + "\n\nWith Regards,\nDynamics\n(Project Oriented Community)";
+
+        mailMessage.setSubject(mailSubject);
+        mailMessage.setText(mailContent);
+
+        mailSender.send(mailMessage);
+        return "registrationmessage.html";
     }
 }
