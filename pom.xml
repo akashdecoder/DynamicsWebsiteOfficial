@@ -13,7 +13,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>website</name>
     <description>Official Website for Dynamics Project Oriented Community</description>
-
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -78,6 +77,7 @@
 <!--                    <compilerArgs>-->
 <!--                        <arg>-parameters</arg>-->
 <!--                    </compilerArgs>-->
+
                     <forceJavacCompilerUse>true</forceJavacCompilerUse>
                 </configuration>
                 <executions>
@@ -92,9 +92,9 @@
                         <phase>none</phase>
                     </execution>
                 </executions>
+
             </plugin>
 
         </plugins>
     </build>
-
 </project>
