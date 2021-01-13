@@ -4,6 +4,4 @@
 
 1. Front End: HTML + CSS + JavaScript + BootStrap
 
-2. Middle End: JAVA Spring Boot
-
-3. Back End: MySQL Database
+2. Back End: Java Spring Boot Microservices + Firebase Cloud
