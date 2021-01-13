@@ -1,7 +1,7 @@
 package com.dynamics.website.controller;
 
 import com.dynamics.website.model.AppUser;
-import com.dynamics.website.repository.RegisterRepository;
+import com.dynamics.website.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,19 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/dynamics/")
 public class RegisterController {
-    private final RegisterRepository registerRepository;
+    @Autowired
+    UserService userService;
 
     @Autowired
     private JavaMailSender mailSender;
-
-    @Autowired
-    public RegisterController(RegisterRepository registerRepository) {
-        this.registerRepository = registerRepository;
-    }
 
     @GetMapping("recruitment")
     public String formPage(AppUser appUser) {
@@ -33,13 +30,12 @@ public class RegisterController {
     }
 
     @PostMapping("add")
-    public String addUser(@Valid AppUser appUser, BindingResult result, Model model) {
+    public String addUser(@Valid AppUser appUser, BindingResult result, Model model) throws InterruptedException,
+            ExecutionException {
         if(result.hasErrors()) {
             return "/dynamics";
         }
-
-        registerRepository.save(appUser);
-
+        userService.saveUser(appUser);
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
         mailMessage.setFrom("dynamicsPOC19.sit@gmail.com");

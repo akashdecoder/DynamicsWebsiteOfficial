@@ -1,38 +1,24 @@
 package com.dynamics.website.model;
 
-import javax.persistence.*;
 
-@Entity
-@Table
 public class CodingUser {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(unique = false)
     private long coding_id;
 
-    @Column
     private String firstName;
 
-    @Column
     private String lastName;
 
-    @Column
     private String year;
 
-    @Column
     private String branch;
 
-    @Column
     private String usn;
 
-    @Column
     private String email;
 
-    @Column
     private long contact;
 
-    @Column
     private String event_name;
 
     public CodingUser() {

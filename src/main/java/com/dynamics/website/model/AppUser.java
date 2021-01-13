@@ -1,45 +1,35 @@
 package com.dynamics.website.model;
 
-import net.bytebuddy.implementation.bind.annotation.Default;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
-import javax.persistence.*;
-
-@Entity
-@Table
 public class AppUser {
 
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(unique = false)
+
     private long userId;
 
-    @Column
+
     private String userName;
 
-    @Column
+
     private String firstName;
 
-    @Column
+
     private String lastName;
 
 
-//    private boolean enabled;
 
-    @Column
     private String year;
 
-    @Column
+
     private String branch;
 
-    @Column
+
     private String usn;
 
-    @Column
+
     private String email;
 
-    @Column
+
     private long contact;
 
     public AppUser() {
@@ -107,9 +97,6 @@ public class AppUser {
     public void setUsn(String usn) {
         this.usn = usn;
     }
-    //    public void setEnabled(boolean enabled) {
-//        this.enabled = enabled;
-//    }
 
     public String getYear() {
         return year;

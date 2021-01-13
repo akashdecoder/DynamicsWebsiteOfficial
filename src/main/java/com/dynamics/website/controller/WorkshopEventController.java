@@ -1,7 +1,7 @@
 package com.dynamics.website.controller;
 
 import com.dynamics.website.model.WorkshopUser;
-import com.dynamics.website.repository.WorkshopRepository;
+import com.dynamics.website.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,19 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/dynamics/events/")
 public class WorkshopEventController {
-    private final WorkshopRepository workshopRepository;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
-    public WorkshopEventController(WorkshopRepository workshopRepository) {
-        this.workshopRepository = workshopRepository;
-    }
 
     @GetMapping("workshop")
     public String formPage(WorkshopUser workshopUser) {
@@ -33,11 +32,11 @@ public class WorkshopEventController {
     }
 
     @PostMapping("addWorkshops")
-    public String addWorkshopUser(@Valid WorkshopUser workshopUser, BindingResult result, Model model) {
+    public String addWorkshopUser(@Valid WorkshopUser workshopUser, BindingResult result, Model model) throws InterruptedException, ExecutionException {
         if(result.hasErrors()) {
             return "/dynamics/events";
         }
-        workshopRepository.save(workshopUser);
+        userService.saveUser(workshopUser);
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
         mailMessage.setFrom("dynamicsPOC19.sit@gmail.com");

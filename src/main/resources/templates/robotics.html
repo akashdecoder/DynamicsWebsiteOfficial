@@ -32,38 +32,7 @@
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <img class="img-fluid" src="BOSE.jpg" alt="" />
         </a>
-        <!--        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
-        <!--            Menu-->
-        <!--            <i class="fa fa-bars"></i>-->
-        <!--        </button>-->
-        <!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
-        <!--            <ul class="navbar-nav text-uppercase ml-auto">-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger" href="index.html">Home</a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger" href="about.html">About Us</a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger" href="portfolio.html">Portfolio</a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger" href="project.html">Projects</a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger" href="events.html">Events</a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger active" href="recruitment.html">Recruitments</a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger" href="team.html">Our Team</a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link js-scroll-trigger" href="contactus.html">Contact Us</a>-->
-        <!--                </li>-->
-        <!--            </ul>-->
-        <!--        </div>-->
+
     </div>
 </nav>
 
@@ -82,7 +51,6 @@
             <h3>Register</h3>
         </div>
         <form class="contact_form" th:action="@{/dynamics/events/addRobotics}" th:object="${roboticsUser}" method="post">
-<!--            <p class="helper-text">* denotes a required field</p>-->
             <div class="form-group">
                 <label class="form-label" for="firstName">First name</label>
                 <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>

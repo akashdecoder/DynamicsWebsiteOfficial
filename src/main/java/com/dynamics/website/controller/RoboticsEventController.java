@@ -2,7 +2,7 @@ package com.dynamics.website.controller;
 
 
 import com.dynamics.website.model.RoboticsUser;
-import com.dynamics.website.repository.RoboticsRepository;
+import com.dynamics.website.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,19 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("/dynamics/events/")
 public class RoboticsEventController {
-    private final RoboticsRepository roboticsRepository;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
-    public RoboticsEventController(RoboticsRepository roboticsRepository) {
-        this.roboticsRepository = roboticsRepository;
-    }
 
     @GetMapping("robotics")
     public String formPage(RoboticsUser roboticsUser) {
@@ -34,11 +33,11 @@ public class RoboticsEventController {
     }
 
     @PostMapping("addRobotics")
-    public String addRoboticsUser(@Valid RoboticsUser roboticsUser, BindingResult result, Model model) {
+    public String addRoboticsUser(@Valid RoboticsUser roboticsUser, BindingResult result, Model model) throws InterruptedException, ExecutionException {
         if(result.hasErrors()) {
             return "/dynamics/events";
         }
-        roboticsRepository.save(roboticsUser);
+        userService.saveUser(roboticsUser);
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
         mailMessage.setFrom("dynamicsPOC19.sit@gmail.com");
