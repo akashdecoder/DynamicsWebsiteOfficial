@@ -1,1 +1,1 @@
-web: java -jar out/artifacts/website_jar/website.jar
+web: java -cp out/artifacts/website_jar/website.jar
