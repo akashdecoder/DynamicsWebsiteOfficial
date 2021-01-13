@@ -1,1 +1,1 @@
-web: java -jar /home/akash/Desktop/DYNAMICS/DynamicsWebsiteOfficial/out/artifacts/website.jar
+web: java -jar out/artifacts/website_jar/website.jar
