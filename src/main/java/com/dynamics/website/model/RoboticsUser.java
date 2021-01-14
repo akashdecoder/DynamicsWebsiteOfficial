@@ -1,7 +1,5 @@
 package com.dynamics.website.model;
 
-
-
 public class RoboticsUser {
 
     private long robotics_id;
