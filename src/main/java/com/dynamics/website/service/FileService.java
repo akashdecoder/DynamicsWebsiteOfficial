@@ -33,10 +33,8 @@ public class FileService {
                 .build();
 
         Credentials credentials = GoogleCredentials.fromStream(new FileInputStream(
-                "/home/akash/Desktop/DYNAMICS/" +
-                        "DynamicsWebsiteOfficial/src/main/" +
-                        "resources/dynamicspoc-95ae9-firebase-adminsdk-v2gz6-" +
-                        "3dec038427.json"));
+                "src/main/resources/dynamicspoc-95ae9-firebase-adminsdk-v2gz6-3dec038427.json"
+        ));
         Storage storage = StorageOptions.newBuilder()
                 .setCredentials(credentials).build().getService();
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));

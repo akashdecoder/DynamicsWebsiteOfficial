@@ -88,9 +88,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <encoding>UTF-8</encoding>
-<!--                    <compilerArgs>-->
-<!--                        <arg>-parameters</arg>-->
-<!--                    </compilerArgs>-->
 
                     <forceJavacCompilerUse>true</forceJavacCompilerUse>
                 </configuration>

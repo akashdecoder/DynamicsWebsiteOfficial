@@ -54,11 +54,11 @@ public class RegisterController {
         }
         userService.saveUser(appUser);
 
-        try {
-            generatePdf(appUser);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            generatePdf(appUser);
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
@@ -78,54 +78,54 @@ public class RegisterController {
         return "registrationmessage.html";
     }
 
-    public void generatePdf(AppUser user) throws IOException, DocumentException {
-        String OS = System.getProperty("os.name").toLowerCase();
-        String path = "";
-        if(OS.indexOf("win") >= 0) {
-            path = "D:/"+user.getFirstName()+".pdf";
-        } else if(OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") >= 0) {
-            path = "/home/" + user.getFirstName() + ".pdf";
-        }
-        Document document = new Document();
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(path));
-        document.open();
-        addMetaData(document);
-        Paragraph paragraph = new Paragraph();
-        paragraph.add(new Paragraph("Registration", new Font(Font.FontFamily.TIMES_ROMAN, 18)));
-        addEmptyLine(paragraph, 1);
-        paragraph.add(new Paragraph("FirstName: " + user.getFirstName(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
-                Font.BOLD)));
-        addEmptyLine(paragraph, 1);
-        paragraph.add(new Paragraph("LastName: " + user.getLastName(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
-                Font.BOLD)));
-        addEmptyLine(paragraph, 1);
-        paragraph.add(new Paragraph("Email: " + user.getEmail(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
-                Font.BOLD)));
-        addEmptyLine(paragraph, 1);
-        paragraph.add(new Paragraph("Branch: " + user.getBranch(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
-                Font.BOLD)));
-        addEmptyLine(paragraph, 1);
-        paragraph.add(new Paragraph("USN: " + user.getUsn(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
-                Font.BOLD)));
-        addEmptyLine(paragraph, 1);
-        paragraph.add(new Paragraph("Year: " + user.getYear(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
-                Font.BOLD)));
-        addEmptyLine(paragraph, 1);
-        paragraph.add(new Paragraph("Contact: " + user.getContact(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
-                Font.BOLD)));
-        addEmptyLine(paragraph, 1);
-        document.add(paragraph);
-        document.newPage();
-        document.close();
-    }
-
-    public void addMetaData(Document document) {
-        document.addTitle("Registration Dynamics");
-    }
-
-    private static void addEmptyLine(Paragraph paragraph, int number) {
-        for (int i = 0; i < number; i++) {
-            paragraph.add(new Paragraph(" "));
-        }
-    }
+//    public void generatePdf(AppUser user) throws IOException, DocumentException {
+//        String OS = System.getProperty("os.name").toLowerCase();
+//        String path = "";
+//        if(OS.indexOf("win") >= 0) {
+//            path = "F:/"+user.getFirstName()+".pdf";
+//        } else if(OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") >= 0) {
+//            path = "/home/" + user.getFirstName() + ".pdf";
+//        }
+//        Document document = new Document();
+//        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(path));
+//        document.open();
+//        addMetaData(document);
+//        Paragraph paragraph = new Paragraph();
+//        paragraph.add(new Paragraph("Registration", new Font(Font.FontFamily.TIMES_ROMAN, 18)));
+//        addEmptyLine(paragraph, 1);
+//        paragraph.add(new Paragraph("FirstName: " + user.getFirstName(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
+//                Font.BOLD)));
+//        addEmptyLine(paragraph, 1);
+//        paragraph.add(new Paragraph("LastName: " + user.getLastName(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
+//                Font.BOLD)));
+//        addEmptyLine(paragraph, 1);
+//        paragraph.add(new Paragraph("Email: " + user.getEmail(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
+//                Font.BOLD)));
+//        addEmptyLine(paragraph, 1);
+//        paragraph.add(new Paragraph("Branch: " + user.getBranch(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
+//                Font.BOLD)));
+//        addEmptyLine(paragraph, 1);
+//        paragraph.add(new Paragraph("USN: " + user.getUsn(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
+//                Font.BOLD)));
+//        addEmptyLine(paragraph, 1);
+//        paragraph.add(new Paragraph("Year: " + user.getYear(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
+//                Font.BOLD)));
+//        addEmptyLine(paragraph, 1);
+//        paragraph.add(new Paragraph("Contact: " + user.getContact(), new Font(Font.FontFamily.TIMES_ROMAN, 12,
+//                Font.BOLD)));
+//        addEmptyLine(paragraph, 1);
+//        document.add(paragraph);
+//        document.newPage();
+//        document.close();
+//    }
+//
+//    public void addMetaData(Document document) {
+//        document.addTitle("Registration Dynamics");
+//    }
+//
+//    private static void addEmptyLine(Paragraph paragraph, int number) {
+//        for (int i = 0; i < number; i++) {
+//            paragraph.add(new Paragraph(" "));
+//        }
+//    }
 }
