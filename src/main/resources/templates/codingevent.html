@@ -39,16 +39,60 @@
     <div class="heading">
         <h1>DYNAMICS</h1>
         <h3 class="cd-headline clip is-full-width">
-            <span>Coding Events Registration </span>
+            <span>CODE@ARENA </span>
         </h3>
     </div>
 </section>
+
+<div id="about" class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="message-box">
+                    <h2>About</h2>
+                    <p>
+                        CODE@ARENA is the first national level online coding contest organized by Team Dynamics of Siddaganga Institute of Technology under the supervision of Dept. of Computer Science and Engineering. The problem statements will be of different domains. There will be real world, number system, dynamic programming and algorithmic problems. Each coder will have to use their logical understanding to solve these problems in the short duration of time.
+                    </p>
+                    <h4>
+                        Rules:
+                    </h4>
+                    <p>
+                        1. There will be 2 rounds: Round 1 and Round 2. From Round 1 top 20 participants will be
+                        shortlisted for Round 2.
+                    </p>
+                    <p>
+                        2. There will 3 problem statements for each round. Two usual questions and one BONUS
+                        question.
+                    </p>
+                    <p>
+                        3. The time duration for Round 1 is 2 hours and for Round 2is 3 hrs.
+                    </p>
+                    <p>
+                        4. If the hackerrank id doesn't match with the one given at the time of registration will
+                        result in disqualification.
+                    </p>
+                    <p>
+                        5. Code Plagiarism will result in disqualification.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="right-box-pro wow fadeIn">
+                    <img src="/mainimages/logo.jpeg" alt="" class="img-fluid img-rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div id="contact" class="section db">
     <div class="container">
         <div class="section-title text-center">
             <h3>Register</h3>
         </div>
-        <form class="contact_form" th:action="@{/dynamics/events/addRobotics}" th:object="${codingUser}" method="post">
+        <form class="contact_form" th:action="@{/dynamics/events/addCoding}" th:object="${codingUser}" method="post">
             <!--            <p class="helper-text">* denotes a required field</p>-->
             <div class="form-group">
                 <label class="form-label" for="firstName">First name</label>
@@ -96,6 +140,10 @@
                     <option value="0">--Select--</option>
                     <option value="cevent1">--</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">HackerRank ID*</label>
+                <input type="text" id="hack_id" class="form-control" th:field="*{hack_id}" required>
             </div>
             <div class="form-group">
                 <label class="form-label" for="email">Email</label>
