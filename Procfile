@@ -1,1 +1,1 @@
-web: java -cp target/classes/;target/dependency/* com.dynamics.website.WebsiteApplication
+web: java -cp target/classes/ com.dynamics.website.WebsiteApplication
