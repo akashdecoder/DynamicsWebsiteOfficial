@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar out/artifacts/website_jar/website.jar -Server.port=$PORT $JAR_OPTS
+web: java $JAVA_OPTS -jar target/website-0.0.1-SNAPSHOT.jar -Server.port=$PORT $JAR_OPTS
