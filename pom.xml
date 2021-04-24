@@ -113,7 +113,7 @@
                 <configuration>
                     <archive>
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                        <manifestFile>com.dynamics.website.WebsiteApplication</manifestFile>
+                        <manifestFile>${project.build.directory}/com.dynamics.website.WebsiteApplication</manifestFile>
                     </archive>
                 </configuration>
             </plugin>
