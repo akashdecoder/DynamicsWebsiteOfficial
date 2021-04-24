@@ -1,1 +1,1 @@
-web: java -cp target/classes/ com.dynamics.website.WebsiteApplication
+web: java -Dserver.port=$PORT -jar target/demo-0.0.1-SNAPSHOT.jar
