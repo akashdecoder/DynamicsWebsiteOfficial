@@ -37,10 +37,7 @@
 
 <section id="home" class="main-banner parallaxie" style="background: url('/mainimages/codingevent.jpg')">
     <div class="heading">
-        <h1>DYNAMICS</h1>
-        <h3 class="cd-headline clip is-full-width">
-            <span>CODE@ARENA </span>
-        </h3>
+        <h1>CODE@ARENA</h1>
     </div>
 </section>
 
@@ -86,6 +83,26 @@
     </div>
 </div>
 
+<div id="time_venue" class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>
+                Time & Venue
+            </h3>
+        </div>
+        <div class="row">
+            <div class="section-title text-center" >
+                <h2>
+                    Date:
+                </h2>
+                <h2>
+                    Venue:
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div id="contact" class="section db">
     <div class="container">
@@ -110,6 +127,8 @@
                     <option value="0">--Select--</option>
                     <option value="1st Year"> 1st Year </option>
                     <option value="2nd Year"> 2nd Year </option>
+                    <option value="3rd Year"> 3rd Year </option>
+                    <option value="4th Year"> 4th Year </option>
                 </select>
             </div>
             <div class="form-group">
@@ -126,6 +145,7 @@
                     <option value="EIE">Electronics Instrumentation Engineering</option>
                     <option value="MECH">Mechanical Engineering</option>
                     <option value="TEL">Telecommunication Engineering</option>
+                    <option value="OTHERS">Others</option>
 
                 </select>
             </div>
@@ -138,7 +158,7 @@
                 <label class="form-label">Event*</label>
                 <select class="form-control" th:field="*{event_name}">
                     <option value="0">--Select--</option>
-                    <option value="cevent1">--</option>
+                    <option value="CODE@ARENA">CODE@ARENA</option>
                 </select>
             </div>
             <div class="form-group">
@@ -162,71 +182,6 @@
     </div>
 </div>
 
-<!--<form class="reg-form" th:action="@{/dynamics/events/add}" th:object="${codingUser}" method="post">-->
-<!--    <h2>Register</h2>-->
-<!--    <p class="helper-text">* denotes a required field</p>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="firstName">First name</label>-->
-<!--        <input type="text" id="firstName" class="field text-field first-name-field" th:field="*{firstName}" required>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label cf" for="lastName">Last name</label>-->
-<!--        <input type="text" id="lastName" class="field text-field last-name-field" th:field="*{lastName}" required>-->
-<!--    </div>-->
-
-
-<!--    <div class="field-row">-->
-<!--        <label class="form-label">Year</label>-->
-<!--        <select class="form-dropdown field" th:field="*{year}">-->
-<!--            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
-<!--            <option value="1st Year"> 1st Year </option>-->
-<!--            <option value="2nd Year"> 2nd Year </option>-->
-<!--        </select>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label">Branch</label>-->
-<!--        <select class="field form-dropdown" th:field="*{branch}" required>-->
-<!--            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
-<!--            <option value="BIO">Bio Technology</option>-->
-<!--            <option value="CHEM">Chemical Engineering</option>-->
-<!--            <option value="CIVIL">Civil Engineering</option>-->
-<!--            <option value="CSE"> Computer ScienceEngineering </option>-->
-<!--            <option value="ISE">Information Science Engineering</option>-->
-<!--            <option value="EEE">Electrical Electronics Engineering</option>-->
-<!--            <option value="ECE">Electronics Communication Engineering</option>-->
-<!--            <option value="EIE">Electronics Instrumentation Engineering</option>-->
-<!--            <option value="MECH">Mechanical Engineering</option>-->
-<!--            <option value="TEL">Telecommunication Engineering</option>-->
-
-<!--        </select>-->
-<!--    </div>-->
-
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="usn">USN</label>-->
-<!--        <input type="text" id="usn" class="field text-field email-field" th:field="*{usn}" required>-->
-<!--        <span class="message"></span>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label">Event*</label>-->
-<!--        <select class="field form-dropdown" th:field="*{event_name}">-->
-<!--            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
-<!--            <option value="cevent1">&#45;&#45;</option>-->
-<!--        </select>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="email">Email</label>-->
-<!--        <input type="email" id="email" class="field text-field email-field" th:field="*{email}" required>-->
-<!--        <span class="message"></span>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="tel">Contact</label>-->
-<!--        <input type="tel" id="tel" class="field text-field tel-field" th:field="*{contact}" required>-->
-<!--        <span class="message"></span>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <input type="submit" class="sim-btn hvr-bounce-to-top pricingTable-signup" value="Register">-->
-<!--    </div>-->
-<!--</form>-->
 <div class="copyrights">
     <div class="container">
         <div class="footer-distributed">
