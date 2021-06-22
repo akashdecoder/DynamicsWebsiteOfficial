@@ -37,18 +37,79 @@
 
 <section id="home" class="main-banner parallaxie" style="background: url('/mainimages/codingevent.jpg')">
     <div class="heading">
-        <h1>DYNAMICS</h1>
-        <h3 class="cd-headline clip is-full-width">
-            <span>Coding Events Registration </span>
-        </h3>
+        <h1>CODE@ARENA</h1>
     </div>
 </section>
+
+<div id="about" class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="message-box">
+                    <h2>About</h2>
+                    <p>
+                        CODE@ARENA is the first national level online coding contest organized by Team Dynamics of Siddaganga Institute of Technology under the supervision of Dept. of Computer Science and Engineering. The problem statements will be of different domains. There will be real world, number system, dynamic programming and algorithmic problems. Each coder will have to use their logical understanding to solve these problems in the short duration of time.
+                    </p>
+                    <h4>
+                        Rules:
+                    </h4>
+                    <p>
+                        1. There will be 2 rounds: Round 1 and Round 2. From Round 1 top 20 participants will be
+                        shortlisted for Round 2.
+                    </p>
+                    <p>
+                        2. There will 3 problem statements for each round. Two usual questions and one BONUS
+                        question.
+                    </p>
+                    <p>
+                        3. The time duration for Round 1 is 2 hours and for Round 2is 3 hrs.
+                    </p>
+                    <p>
+                        4. If the hackerrank id doesn't match with the one given at the time of registration will
+                        result in disqualification.
+                    </p>
+                    <p>
+                        5. Code Plagiarism will result in disqualification.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="right-box-pro wow fadeIn">
+                    <img src="/mainimages/logo.jpeg" alt="" class="img-fluid img-rounded">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="time_venue" class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>
+                Time & Venue
+            </h3>
+        </div>
+        <div class="row">
+            <div class="section-title text-center" >
+                <h2>
+                    Date:
+                </h2>
+                <h2>
+                    Venue:
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div id="contact" class="section db">
     <div class="container">
         <div class="section-title text-center">
             <h3>Register</h3>
         </div>
-        <form class="contact_form" th:action="@{/dynamics/events/addRobotics}" th:object="${codingUser}" method="post">
+        <form class="contact_form" th:action="@{/dynamics/events/addCoding}" th:object="${codingUser}" method="post">
             <!--            <p class="helper-text">* denotes a required field</p>-->
             <div class="form-group">
                 <label class="form-label" for="firstName">First name</label>
@@ -66,6 +127,8 @@
                     <option value="0">--Select--</option>
                     <option value="1st Year"> 1st Year </option>
                     <option value="2nd Year"> 2nd Year </option>
+                    <option value="3rd Year"> 3rd Year </option>
+                    <option value="4th Year"> 4th Year </option>
                 </select>
             </div>
             <div class="form-group">
@@ -82,6 +145,7 @@
                     <option value="EIE">Electronics Instrumentation Engineering</option>
                     <option value="MECH">Mechanical Engineering</option>
                     <option value="TEL">Telecommunication Engineering</option>
+                    <option value="OTHERS">Others</option>
 
                 </select>
             </div>
@@ -94,8 +158,12 @@
                 <label class="form-label">Event*</label>
                 <select class="form-control" th:field="*{event_name}">
                     <option value="0">--Select--</option>
-                    <option value="cevent1">--</option>
+                    <option value="CODE@ARENA">CODE@ARENA</option>
                 </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">HackerRank ID*</label>
+                <input type="text" id="hack_id" class="form-control" th:field="*{hack_id}" required>
             </div>
             <div class="form-group">
                 <label class="form-label" for="email">Email</label>
@@ -114,71 +182,6 @@
     </div>
 </div>
 
-<!--<form class="reg-form" th:action="@{/dynamics/events/add}" th:object="${codingUser}" method="post">-->
-<!--    <h2>Register</h2>-->
-<!--    <p class="helper-text">* denotes a required field</p>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="firstName">First name</label>-->
-<!--        <input type="text" id="firstName" class="field text-field first-name-field" th:field="*{firstName}" required>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label cf" for="lastName">Last name</label>-->
-<!--        <input type="text" id="lastName" class="field text-field last-name-field" th:field="*{lastName}" required>-->
-<!--    </div>-->
-
-
-<!--    <div class="field-row">-->
-<!--        <label class="form-label">Year</label>-->
-<!--        <select class="form-dropdown field" th:field="*{year}">-->
-<!--            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
-<!--            <option value="1st Year"> 1st Year </option>-->
-<!--            <option value="2nd Year"> 2nd Year </option>-->
-<!--        </select>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label">Branch</label>-->
-<!--        <select class="field form-dropdown" th:field="*{branch}" required>-->
-<!--            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
-<!--            <option value="BIO">Bio Technology</option>-->
-<!--            <option value="CHEM">Chemical Engineering</option>-->
-<!--            <option value="CIVIL">Civil Engineering</option>-->
-<!--            <option value="CSE"> Computer ScienceEngineering </option>-->
-<!--            <option value="ISE">Information Science Engineering</option>-->
-<!--            <option value="EEE">Electrical Electronics Engineering</option>-->
-<!--            <option value="ECE">Electronics Communication Engineering</option>-->
-<!--            <option value="EIE">Electronics Instrumentation Engineering</option>-->
-<!--            <option value="MECH">Mechanical Engineering</option>-->
-<!--            <option value="TEL">Telecommunication Engineering</option>-->
-
-<!--        </select>-->
-<!--    </div>-->
-
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="usn">USN</label>-->
-<!--        <input type="text" id="usn" class="field text-field email-field" th:field="*{usn}" required>-->
-<!--        <span class="message"></span>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label">Event*</label>-->
-<!--        <select class="field form-dropdown" th:field="*{event_name}">-->
-<!--            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
-<!--            <option value="cevent1">&#45;&#45;</option>-->
-<!--        </select>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="email">Email</label>-->
-<!--        <input type="email" id="email" class="field text-field email-field" th:field="*{email}" required>-->
-<!--        <span class="message"></span>-->
-<!--    </div>-->
-<!--    <div class="field-row">-->
-<!--        <label class="form-label" for="tel">Contact</label>-->
-<!--        <input type="tel" id="tel" class="field text-field tel-field" th:field="*{contact}" required>-->
-<!--        <span class="message"></span>-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <input type="submit" class="sim-btn hvr-bounce-to-top pricingTable-signup" value="Register">-->
-<!--    </div>-->
-<!--</form>-->
 <div class="copyrights">
     <div class="container">
         <div class="footer-distributed">

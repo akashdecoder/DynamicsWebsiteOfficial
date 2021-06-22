@@ -12,6 +12,7 @@
     <artifactId>website</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>website</name>
+    <packaging>jar</packaging>
     <description>Official Website for Dynamics Project Oriented Community</description>
     <properties>
         <java.version>8</java.version>
@@ -59,8 +60,6 @@
             <version>7.1.0</version>
         </dependency>
 
-
-
     </dependencies>
 
     <build>
@@ -68,6 +67,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
             </plugin>
         </plugins>
     </build>

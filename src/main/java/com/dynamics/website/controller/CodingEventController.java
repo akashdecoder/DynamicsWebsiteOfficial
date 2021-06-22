@@ -30,7 +30,7 @@ public class CodingEventController {
         return "codingevent.html";
     }
 
-    @PostMapping("add")
+    @PostMapping("addCoding")
     public String addUser(@Valid CodingUser codingUser, BindingResult result, Model model) throws InterruptedException, ExecutionException {
         if(result.hasErrors()) {
             return "/dynamics/events";
