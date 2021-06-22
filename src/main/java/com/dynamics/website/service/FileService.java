@@ -39,7 +39,8 @@ public class FileService {
                 .setCredentials(credentials).build().getService();
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));
         System.out.println(file.toPath());
-        return String.format(DOWNLOAD_URL, URLEncoder.encode(fileName, StandardCharsets.UTF_8));
+//        return String.format(DOWNLOAD_URL,  URLEncoder.encode(fileName, StandardCharsets.UTF_8));
+        return "hello";
     }
 
     private File convertToFile(MultipartFile multipartFile, String fileName) throws IOException {
