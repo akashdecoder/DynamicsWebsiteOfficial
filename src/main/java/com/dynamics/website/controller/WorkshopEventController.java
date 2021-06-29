@@ -1,16 +1,15 @@
 package com.dynamics.website.controller;
 
 import com.dynamics.website.model.WorkshopUser;
-import com.dynamics.website.service.UserService;
+import com.dynamics.website.repository.WorkshopUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.concurrent.ExecutionException;
@@ -20,11 +19,7 @@ import java.util.concurrent.ExecutionException;
 public class WorkshopEventController {
 
     @Autowired
-    UserService userService;
-
-    @Autowired
-    private JavaMailSender mailSender;
-
+    private WorkshopUserRepository workshopUserRepository;
 
     @GetMapping("workshop")
     public String formPage(WorkshopUser workshopUser) {
@@ -32,25 +27,17 @@ public class WorkshopEventController {
     }
 
     @PostMapping("addWorkshops")
-    public String addWorkshopUser(@Valid WorkshopUser workshopUser, BindingResult result, Model model) throws InterruptedException, ExecutionException {
+    public String addWorkshopUser(@Valid WorkshopUser workshopUser, BindingResult result, Model model,
+                                  RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException {
         if(result.hasErrors()) {
             return "/dynamics/events";
         }
-        userService.saveUser(workshopUser);
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-
-        mailMessage.setFrom("dynamicsPOC19.sit@gmail.com");
-        mailMessage.setTo(workshopUser.getEmail());
-
-        String mailSubject = workshopUser.getEvent_name() + " Registration.";
-        String mailContent = "Thank You " + workshopUser.getFirstName() + " for registering to " +
-                workshopUser.getEvent_name()+".\nKeep in touch to know more updates.";
-        mailContent = mailContent + "\n\nWith Regards,\nDynamics\n(Project Oriented Community)";
-
-        mailMessage.setSubject(mailSubject);
-        mailMessage.setText(mailContent);
-
-        mailSender.send(mailMessage);
-        return "registrationmessage.html";
+        WorkshopUser user = workshopUserRepository.findByEmail(workshopUser.getEmail());
+        if(user != null) {
+            redirectAttributes.addFlashAttribute("warning", "User Already Registered");
+            return "redirect:/dynamics/events/workshop";
+        }
+        workshopUserRepository.save(workshopUser);
+        return "registrationmessage";
     }
 }

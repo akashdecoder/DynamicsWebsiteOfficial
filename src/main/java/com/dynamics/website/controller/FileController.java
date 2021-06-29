@@ -2,7 +2,7 @@ package com.dynamics.website.controller;
 
 import com.dynamics.website.model.FileUser;
 import com.dynamics.website.model.RoboticsUser;
-import com.dynamics.website.service.FileService;
+//import com.dynamics.website.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +20,8 @@ import java.io.IOException;
 @RequestMapping("/dynamics/")
 public class FileController {
 
-    @Autowired
-    FileService fileService;
+//    @Autowired
+//    FileService fileService;
 
     @GetMapping("file")
     public String formPage(FileUser fileUser) {
@@ -36,7 +36,7 @@ public class FileController {
         }
         System.out.println(fileUser.getName());
         System.out.println(fileUser.getFile());
-        fileService.upload(multipartFile);
+//        fileService.upload(multipartFile);
         return "registrationmessage.html";
     }
 }

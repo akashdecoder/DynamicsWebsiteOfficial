@@ -14,12 +14,13 @@
 <meta name="description" content="Colorlib Templates">
 <meta name="author" content="Colorlib">
 <meta name="keywords" content="Colorlib Templates">
-
 <link rel="shortcut icon" href="/mainimages/SIT-Tumkur-Logo.png" type="image/x-icon" >
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/style.css">
 <link rel="stylesheet" type="text/css" href="/css/responsive.css">
 <link rel="stylesheet" type="text/css" href="/css/custom.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 
 
 <script type="text/javascript" src="/js/modernizr.js"></script>
@@ -60,7 +61,7 @@
                     <a class="nav-link js-scroll-trigger" href="/dynamics/events">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger active" href="/dynamics/recruitment">Recruitments</a>
+                    <a class="nav-link js-scroll-trigger" href="/dynamics/recruitment">Recruitments</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="/dynamics/team">Our Team</a>
@@ -85,60 +86,80 @@
     <div class="container">
         <div class="section-title text-center">
             <h3>Register</h3>
+            <hr>
         </div>
-        <form class="contact_form" th:action="@{/dynamics/add}" th:object="${appUser}" method="post">
-            <div class="form-group">
-                <label class="form-label" for="firstName">First name</label>
-                <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label cf" for="lastName">Last name</label>
-                <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
-            </div>
+        <p><b>Rules and Regulations</b>
+        <ul style="color: #414141;">
+            <li>
+                1. Register with your college email Id.
+            </li>
+            <li>
+                2. All the fields are mandatory.
+            </li>
+            <li>
+                3. If you are facing any kinds of errors during registration, mail your details based on the form to dynamicspoc19.cse@sit.ac.in.
+            </li>
+            <li>
+                4. After registration please check mails every hour to recieve further instructions.
+            </li>
+        </ul>
+        </p>
+        <form class="contact_form" th:action="@{/dynamics/registered}" th:object="${appUser}" method="post">
+            <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
+            <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
+            <div class="row g-3" style="justify-content: center;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">First name</label>
+                        <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label cf" for="lastName">Last name</label>
+                        <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Year</label>
+                        <select class="form-control" style="height: 54px" th:field="*{year}">
+                            <option value="0">--Select--</option>
+                            <option value="1st Year"> 1st Year </option>
+                            <option value="2nd Year"> 2nd Year </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="usn">USN</label>
+                        <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-control" th:field="*{email}" required>
 
-
-            <div class="form-group">
-                <label class="form-label">Year</label>
-                <select class="form-control" th:field="*{year}">
-                    <option value="0">--Select--</option>
-                    <option value="1st Year"> 1st Year </option>
-                    <option value="2nd Year"> 2nd Year </option>
-                </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="tel">Contact</label>
+                        <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label class="form-label">Branch</label>
-                <select class="form-control" th:field="*{branch}" required>
-                    <option value="0">--Select--</option>
-                    <option value="BIO">Bio Technology</option>
-                    <option value="CHEM">Chemical Engineering</option>
-                    <option value="CIVIL">Civil Engineering</option>
-                    <option value="CSE"> Computer ScienceEngineering </option>
-                    <option value="ISE">Information Science Engineering</option>
-                    <option value="EEE">Electrical Electronics Engineering</option>
-                    <option value="ECE">Electronics Communication Engineering</option>
-                    <option value="EIE">Electronics Instrumentation Engineering</option>
-                    <option value="MECH">Mechanical Engineering</option>
-                    <option value="TEL">Telecommunication Engineering</option>
-
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" for="usn">USN</label>
-                <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input type="email" id="email" class="form-control" th:field="*{email}" required>
-
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="tel">Contact</label>
-                <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>
+            <div class="col-lg-12">
+                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                <label for="vehicle3">I hereby declare that the information given by me is correct.</label><br><br>
             </div>
             <div class="col-lg-12 text-center">
-                <input type="submit" class="sim-btn hvr-bounce-to-top" value="Register">
-                <input type="reset" class="sim-btn hvr-bounce-to-top" value="Clear">
+                <button type="submit" class="sim-btn btn-success hvr-bounce-to-top btn-lg"
+                        value="Register"><b>Register</b>
+                </button>
+                <button type="reset" class="sim-btn btn-warning hvr-bounce-to-top btn-lg" value="Clear"><b>Clear</b>
+                </button>
             </div>
         </form>
     </div>
@@ -170,6 +191,7 @@
 
 <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="/js/all.js"></script>
 <script type="text/javascript" src="/js/jquery.mobile.customized.min.js"></script>

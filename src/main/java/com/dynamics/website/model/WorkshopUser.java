@@ -1,30 +1,35 @@
 package com.dynamics.website.model;
 
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "workshop")
 public class WorkshopUser {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long workshop_id;
 
-
+    @Column(nullable = false, length = 64)
     private String firstName;
 
-
+    @Column(nullable = false, length = 64)
     private String lastName;
 
-
+    @Column(nullable = false, length = 64)
     private String year;
 
-
+    @Column(nullable = false, length = 64)
     private String branch;
 
-
+    @Column(nullable = false, length = 64)
     private String usn;
 
-
+    @Column(nullable = false, length = 64)
     private String email;
 
-
+    @Column(nullable = false, length = 12)
     private long contact;
 
 
