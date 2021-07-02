@@ -1,69 +1,66 @@
 package com.dynamics.website.model;
 
-import org.springframework.web.multipart.MultipartFile;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.io.File;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "files")
 public class FileUser {
 
-    private MultipartFile file;
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
-    private File file1;
+    @Column(nullable = false, length = 200)
+    private String fileName;
 
-    private String name;
+    @Column(nullable = false, length = 200)
+    private String fileType;
 
-    private String usn;
-
-    private String email;
+    @Lob
+    private byte[] data;
 
     public FileUser() {
+
     }
 
-    public FileUser(MultipartFile file, File file1, String name, String usn, String email) {
-        this.file = file;
-        this.file1 = file1;
-        this.name = name;
-        this.usn = usn;
-        this.email = email;
+    public FileUser(String fileName, String fileType, byte[] data) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
     }
 
-    public MultipartFile getFile() {
-        return file;
+    public String getId() {
+        return id;
     }
 
-    public void setFile(MultipartFile file) {
-        this.file = file;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public File getFile1() {
-        return file1;
+    public String getFileName() {
+        return fileName;
     }
 
-    public void setFile1(File file1) {
-        this.file1 = file1;
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
-    public String getName() {
-        return name;
+    public String getFileType() {
+        return fileType;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 
-    public String getUsn() {
-        return usn;
+    public byte[] getData() {
+        return data;
     }
 
-    public void setUsn(String usn) {
-        this.usn = usn;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setData(byte[] data) {
+        this.data = data;
     }
 }

@@ -3,6 +3,7 @@ package com.dynamics.website.controller;
 
 import com.dynamics.website.model.RoboticsUser;
 import com.dynamics.website.repository.RoboticsUserRepository;
+import com.dynamics.website.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,7 @@ public class RoboticsEventController {
             redirectAttributes.addFlashAttribute("warning", "User Already Registered");
             return "redirect:/dynamics/events/robotics";
         }
+        roboticsUser.setBranch(UserUtils.getBranchName(roboticsUser.getUsn().substring(5, 7).toUpperCase()));
 
         roboticsUserRepository.save(roboticsUser);
 

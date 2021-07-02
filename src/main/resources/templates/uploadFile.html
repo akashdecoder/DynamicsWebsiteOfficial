@@ -43,16 +43,16 @@
             <h3>Upload File</h3>
         </div>
         <form class="contact_form"
-              th:action="@{/dynamics/uploadFiles}"
+              th:action="@{/uploadFiles}"
               th:object="${fileUser}" method="post"
               enctype="multipart/form-data">
             <div class="form-group">
                 <label class="form-label" for="Name">Name</label>
-                <input type="text" id="Name" class="form-control" th:field="*{name}" required>
+                <input type="text" id="Name" class="form-control" name="name" required>
             </div>
             <div class="form-group">
                 <label class="form-label" for="usn">USN</label>
-                <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
+                <input type="text" id="usn" class="form-control" name="usn" required>
             </div>
             <div class="form-group">
                 <input type="file" name="File" id="file" class="form-control-file" required>

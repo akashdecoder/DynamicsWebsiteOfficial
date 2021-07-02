@@ -56,68 +56,87 @@
         <form class="contact_form" th:action="@{/dynamics/events/addRobotics}" th:object="${roboticsUser}" method="post">
             <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
             <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
-            <div class="form-group">
-                <label class="form-label" for="firstName">First name</label>
-                <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label cf" for="lastName">Last name</label>
-                <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
-            </div>
+            <div class="row g-3" style="justify-content: center;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">First name</label>
+                        <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label cf" for="lastName">Last name</label>
+                        <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Year</label>
+                        <select class="form-control" style="height: 54px" th:field="*{year}">
+                            <option value="0">--Select--</option>
+                            <option value="1st Year"> 1st Year </option>
+                            <option value="2nd Year"> 2nd Year </option>
+                            <option value="3rd Year"> 3rd Year </option>
+                            <option value="4th Year"> 4th Year </option>
+                        </select>
+                    </div>
+                </div>
+                <!--                <div class="col-md-6">-->
+                <!--                    <div class="form-group">-->
+                <!--                        <label class="form-label">Branch</label>-->
+                <!--                        <select class="form-control" th:field="*{branch}" required>-->
+                <!--                            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
+                <!--                            <option value="BIO">Bio Technology</option>-->
+                <!--                            <option value="CHEM">Chemical Engineering</option>-->
+                <!--                            <option value="CIVIL">Civil Engineering</option>-->
+                <!--                            <option value="CSE"> Computer ScienceEngineering </option>-->
+                <!--                            <option value="ISE">Information Science Engineering</option>-->
+                <!--                            <option value="EEE">Electrical Electronics Engineering</option>-->
+                <!--                            <option value="ECE">Electronics Communication Engineering</option>-->
+                <!--                            <option value="EIE">Electronics Instrumentation Engineering</option>-->
+                <!--                            <option value="MECH">Mechanical Engineering</option>-->
+                <!--                            <option value="TEL">Telecommunication Engineering</option>-->
+                <!--                            <option value="OTHERS">Others</option>-->
 
+                <!--                        </select>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="usn">USN</label>
+                        <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label">Event*</label>
+                        <select class="form-control" style="height: 54px" th:field="*{event_name}">
+                            <option value="0">--Select--</option>
+                            <option value="CODE@ARENA">EVENT NAME 1</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-control" th:field="*{email}" required>
 
-            <div class="form-group">
-                <label class="form-label">Year</label>
-                <select class="form-control" th:field="*{year}">
-                    <option value="0">--Select--</option>
-                    <option value="1st Year"> 1st Year </option>
-                    <option value="2nd Year"> 2nd Year </option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Branch</label>
-                <select class="form-control" th:field="*{branch}" required>
-                    <option value="0">--Select--</option>
-                    <option value="BIO">Bio Technology</option>
-                    <option value="CHEM">Chemical Engineering</option>
-                    <option value="CIVIL">Civil Engineering</option>
-                    <option value="CSE"> Computer ScienceEngineering </option>
-                    <option value="ISE">Information Science Engineering</option>
-                    <option value="EEE">Electrical Electronics Engineering</option>
-                    <option value="ECE">Electronics Communication Engineering</option>
-                    <option value="EIE">Electronics Instrumentation Engineering</option>
-                    <option value="MECH">Mechanical Engineering</option>
-                    <option value="TEL">Telecommunication Engineering</option>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="tel">Contact</label>
+                        <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>
+                    </div>
+                </div>
 
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" for="usn">USN</label>
-                <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
-            </div>
-            <div class="form-group">
-                <label class="form-label">Event*</label>
-                <select class="form-control" th:field="*{event_name}">
-                    <option value="0">--Select--</option>
-                    <option value="cevent1">--</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="email">Email</label>
-                <input type="email" id="email" class="form-control" th:field="*{email}" required>
-
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="tel">Contact</label>
-                <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>
-            </div>
-            <div class="col-lg-12 text-center">
-                <button type="submit" class="sim-btn btn-success hvr-bounce-to-top btn-lg"
-                        value="Register"><b>Register</b>
-                </button>
-                <button type="reset" class="sim-btn btn-warning hvr-bounce-to-top btn-lg" value="Clear"><b>Clear</b>
-                </button>
+                <div class="col-lg-12 text-center">
+                    <button type="submit" class="sim-btn btn-success hvr-bounce-to-top btn-lg"
+                            value="Register"><b>Register</b>
+                    </button>
+                    <button type="reset" class="sim-btn btn-warning hvr-bounce-to-top btn-lg" value="Clear"><b>Clear</b>
+                    </button>
+                </div>
             </div>
         </form>
     </div>

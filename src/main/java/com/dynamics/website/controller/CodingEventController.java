@@ -2,6 +2,7 @@ package com.dynamics.website.controller;
 
 import com.dynamics.website.model.CodingUser;
 import com.dynamics.website.repository.CodingUserRepository;
+import com.dynamics.website.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +48,7 @@ public class CodingEventController {
             redirectAttributes.addFlashAttribute("warning", "HackerRank Id Already exists. Please Use different Id");
             return "redirect:/dynamics/events/coding";
         }
+        codingUser.setBranch(UserUtils.getBranchName(codingUser.getUsn().substring(5, 7).toUpperCase()));
         codingUserRepository.save(codingUser);
         return "registrationmessage";
     }

@@ -2,6 +2,7 @@ package com.dynamics.website.controller;
 
 import com.dynamics.website.model.WorkshopUser;
 import com.dynamics.website.repository.WorkshopUserRepository;
+import com.dynamics.website.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,7 @@ public class WorkshopEventController {
             redirectAttributes.addFlashAttribute("warning", "User Already Registered");
             return "redirect:/dynamics/events/workshop";
         }
+        workshopUser.setBranch(UserUtils.getBranchName(workshopUser.getUsn().substring(5, 7).toUpperCase()));
         workshopUserRepository.save(workshopUser);
         return "registrationmessage";
     }
