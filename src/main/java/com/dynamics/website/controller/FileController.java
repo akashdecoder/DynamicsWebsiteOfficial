@@ -1,5 +1,6 @@
 package com.dynamics.website.controller;
 
+import com.dynamics.website.model.AppUser;
 import com.dynamics.website.model.FileDb;
 import com.dynamics.website.model.FileUser;
 import com.dynamics.website.model.RoboticsUser;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.File;
 import java.io.IOException;
 
 @Controller

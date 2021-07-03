@@ -104,7 +104,7 @@
             </li>
         </ul>
         </p>
-        <form class="contact_form" th:action="@{/dynamics/registered}" th:object="${appUser}" method="post">
+        <form class="contact_form" th:action="@{/dynamics/registered}" th:object="${appUser}" method="post" enctype="multipart/form-data">
             <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
             <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
             <div class="row g-3" style="justify-content: center;">
@@ -147,6 +147,12 @@
                     <div class="form-group">
                         <label class="form-label" for="tel">Contact</label>
                         <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label" for="file">Upload Resume</label>
+                        <input type="file" name="File" id="file" class="form-control-file" required>
                     </div>
                 </div>
             </div>

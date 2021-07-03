@@ -2,7 +2,9 @@ package com.dynamics.website.service;
 
 import com.dynamics.website.exceptions.FileStorageException;
 import com.dynamics.website.exceptions.MyFileNotFoundException;
+import com.dynamics.website.model.AppUser;
 import com.dynamics.website.model.FileUser;
+import com.dynamics.website.repository.AppUserRepository;
 import com.dynamics.website.repository.FileUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,9 @@ public class FileService {
 
     @Autowired
     private FileUserRepository fileUserRepository;
+
+    @Autowired
+    private AppUserRepository appUserRepository;
 
     public FileUser storeFile(MultipartFile multipartFile) {
         String filename = StringUtils.cleanPath(multipartFile.getOriginalFilename());

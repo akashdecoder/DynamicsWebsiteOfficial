@@ -1,13 +1,17 @@
 package com.dynamics.website.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "registrstaion")
+@Table(name = "registration")
 public class AppUser {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
 
     @Column(nullable = false, length = 64)
     private String firstName;
@@ -30,6 +34,9 @@ public class AppUser {
     @Column(nullable = false, length = 12)
     private long contact;
 
+    @Column(nullable = false, length = 200)
+    private String fileUrl;
+
     public AppUser() {
 
     }
@@ -42,25 +49,23 @@ public class AppUser {
         this.contact = contact;
     }
 
-    public AppUser(long userId, String firstName, String lastName, String year, //
-                   String usn, String email, String branch, Long contact) {
-        super();
-        this.userId = userId;
+    public AppUser(String firstName, String lastName, String year, String branch, String usn, String email, long contact, String fileUrl) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.year = year;
+        this.branch = branch;
         this.usn = usn;
         this.email = email;
-        this.branch = branch;
         this.contact = contact;
+        this.fileUrl = fileUrl;
     }
 
-    public long getUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -111,4 +116,11 @@ public class AppUser {
         this.branch = branch;
     }
 
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
 }
