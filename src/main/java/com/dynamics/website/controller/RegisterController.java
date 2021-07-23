@@ -1,8 +1,6 @@
 package com.dynamics.website.controller;
 
-import com.dynamics.website.exceptions.FileStorageException;
 import com.dynamics.website.model.AppUser;
-import com.dynamics.website.model.FileDb;
 import com.dynamics.website.model.FileUser;
 import com.dynamics.website.repository.AppUserRepository;
 import com.dynamics.website.repository.FileDbRepository;
@@ -11,7 +9,6 @@ import com.dynamics.website.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/dynamics/")
