@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -36,7 +37,7 @@ public class RegisterController {
     }
 
     @PostMapping("registered")
-    public String addUser(@Valid AppUser appUser, @RequestParam("File") MultipartFile multipartFile, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+    public String addUser(@Valid AppUser appUser, @RequestParam("File") MultipartFile multipartFile, BindingResult result, Model model, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         if(result.hasErrors()) {
             return "/dynamics";
         }

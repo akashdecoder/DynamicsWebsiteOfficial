@@ -11,9 +11,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Colorlib Templates">
-<meta name="author" content="Colorlib">
-<meta name="keywords" content="Colorlib Templates">
+<meta name="description" content="Dynamics Project Oriented Community">
+<meta name="author" content="Dynamics Project Oriented Community">
+<meta name="keywords" content="Dynamics Project Oriented Community">
 <link rel="shortcut icon" href="/mainimages/SIT-Tumkur-Logo.png" type="image/x-icon" >
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/style.css">
@@ -91,18 +91,24 @@
         <p><b>Rules and Regulations</b>
         <ul style="color: #414141;">
             <li>
-                1. Register with your college email Id.
+                1. Register with your college email Id or mail id with usn.
             </li>
             <li>
-                2. All the fields are mandatory.
+                2. All the fields are mandatory. Don't provide wrong details.
             </li>
             <li>
                 3. If you are facing any kinds of errors during registration, mail your details based on the form to dynamicspoc19.cse@sit.ac.in.
             </li>
             <li>
-                4. After registration please check mails every hour to recieve further instructions.
+                4. After registration please join the WhatsApp group provided on the success page and check mails frequently to receive further instructions.
             </li>
         </ul>
+        </p>
+        <p>
+            <b style="font-size: large">Download Resume Format: </b>
+            <a href="https://docs.google.com/document/d/1-qNFSPNifzckM8VbFtihmmzLRipX_dBksFcGsDB8Wpc/edit?usp=sharing">
+                <b>Click Here</b>
+            </a>
         </p>
         <form class="contact_form" th:action="@{/dynamics/registered}" th:object="${appUser}" method="post" enctype="multipart/form-data">
             <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
@@ -151,15 +157,15 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="form-label" for="file">Upload Resume</label>
+                        <label class="form-label" for="file">Upload Resume (PDF file only.)</label>
                         <input type="file" name="File" id="file" class="form-control-file" required>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                <label for="vehicle3">I hereby declare that the information given by me is correct.</label><br><br>
-            </div>
+<!--            <div class="col-lg-12">-->
+<!--                <input type="checkbox" id="check" name="checked" value="check">-->
+<!--                <label for="check">I hereby declare that the information given by me is correct.</label><br><br>-->
+<!--            </div>-->
             <div class="col-lg-12 text-center">
                 <button type="submit" class="sim-btn btn-success hvr-bounce-to-top btn-lg"
                         value="Register"><b>Register</b>
