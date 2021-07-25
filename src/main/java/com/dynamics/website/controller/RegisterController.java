@@ -44,7 +44,7 @@ public class RegisterController {
         AppUser user = appUserRepository.findByEmail(appUser.getEmail());
 
         String[] domain = appUser.getEmail().split("@", 2);
-        if(domain[1].compareTo("sit.ac.in") < 0) {
+        if((domain[1].compareTo("sit.ac.in") < 0) || (domain[1].compareTo("gmail.com") < 0)) {
             redirectAttributes.addFlashAttribute("warning", "Please use college mail id");
             return "redirect:/dynamics/recruitment";
         }
