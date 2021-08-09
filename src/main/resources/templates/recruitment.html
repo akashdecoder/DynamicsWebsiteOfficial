@@ -110,7 +110,7 @@
                 <b>Click Here</b>
             </a>
         </p>
-        <form class="contact_form" th:action="@{/dynamics/registered}" th:object="${appUser}" method="post" enctype="multipart/form-data">
+        <form class="contact_form" th:action="@{/registered}" th:object="${appUser}" method="post" enctype="multipart/form-data">
             <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
             <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
             <div class="row g-3" style="justify-content: center;">

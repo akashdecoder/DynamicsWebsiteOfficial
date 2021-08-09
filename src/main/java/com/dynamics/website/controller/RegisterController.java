@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/dynamics/")
 public class RegisterController {
 
     @Autowired
@@ -31,27 +30,27 @@ public class RegisterController {
     @Autowired
     private FileService fileService;
 
-    @GetMapping("recruitment")
+    @GetMapping("/")
     public String formPage(AppUser appUser) {
         return "recruitment.html";
     }
 
-    @PostMapping("registered")
+    @PostMapping("/registered")
     public String addUser(@Valid AppUser appUser, @RequestParam("File") MultipartFile multipartFile, BindingResult result, Model model, RedirectAttributes redirectAttributes, HttpServletRequest request) {
         if(result.hasErrors()) {
-            return "/dynamics";
+            return "/";
         }
         AppUser user = appUserRepository.findByEmail(appUser.getEmail());
 
         String[] domain = appUser.getEmail().split("@", 2);
         if((domain[1].compareTo("sit.ac.in") < 0) && (domain[1].compareTo("gmail.com") < 0)) {
             redirectAttributes.addFlashAttribute("warning", "Please use college mail id");
-            return "redirect:/dynamics/recruitment";
+            return "redirect:/";
         }
 
         if(user != null) {
             redirectAttributes.addFlashAttribute("warning", "User Already Registered");
-            return "redirect:/dynamics/recruitment";
+            return "redirect:/";
         }
         FileUser file = fileService.storeFile(multipartFile);
         String fileUri = ServletUriComponentsBuilder.fromCurrentContextPath()
