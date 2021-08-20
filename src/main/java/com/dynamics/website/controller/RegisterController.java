@@ -61,6 +61,11 @@ public class RegisterController {
         appUser.setBranch(UserUtils.getBranchName(appUser.getUsn().substring(5, 7).toUpperCase()));
         appUser.setFileUrl(fileUri);
         appUserRepository.save(appUser);
-        return "registrationmessage";
+
+        if(appUser.getYear().equals("1st Year")) {
+            return "registrationmessage";
+        }
+
+        return "registrationmessage2";
     }
 }
