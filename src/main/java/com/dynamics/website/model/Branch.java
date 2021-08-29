@@ -11,4 +11,5 @@ public class Branch {
     public static final String EIE = "Electronics and Instrumentation Engineering";
     public static final String MECH = "Mechanical Engineering";
     public static final String TEL = "Telecommunication Engineering";
+    public static final String ADS = "Artificial Intelligence and Data Science";
 }

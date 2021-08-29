@@ -18,6 +18,7 @@ public class UserUtils {
             put("CV", Branch.CIVIL);
             put("BT", Branch.BIO);
             put("ME", Branch.MECH);
+            put("AD", Branch.ADS);
         }
     };
 
