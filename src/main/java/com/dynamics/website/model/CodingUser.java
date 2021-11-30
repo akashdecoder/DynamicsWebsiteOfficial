@@ -1,42 +1,62 @@
 package com.dynamics.website.model;
 
 
-import javax.persistence.*;
+//import javax.persistence.*;
 
-@Entity
-@Table(name = "coding")
+//@Entity
+//@Table(name = "coding")
 public class CodingUser {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private long coding_id;
+//
+//    @Column(nullable = false, length = 64)
+//    private String firstName;
+//
+//    @Column(nullable = false, length = 64)
+//    private String lastName;
+//
+//    @Column(nullable = false, length = 64)
+//    private String year;
+//
+//    @Column(nullable = false, length = 64)
+//    private String branch;
+//
+//    @Column(nullable = false, length = 64)
+//    private String usn;
+//
+//    @Column(nullable = false, length = 64)
+//    private String email;
+//
+//    @Column(nullable = false, length = 12)
+//    private long contact;
+//
+//    @Column(nullable = false, length = 64)
+//    private String event_name;
+//
+//    @Column(nullable = false, length = 150)
+//    private String hack_id;
+
     private long coding_id;
 
-    @Column(nullable = false, length = 64)
     private String firstName;
 
-    @Column(nullable = false, length = 64)
     private String lastName;
 
-    @Column(nullable = false, length = 64)
     private String year;
 
-    @Column(nullable = false, length = 64)
     private String branch;
 
-    @Column(nullable = false, length = 64)
     private String usn;
 
-    @Column(nullable = false, length = 64)
     private String email;
 
-    @Column(nullable = false, length = 12)
     private long contact;
 
-    @Column(nullable = false, length = 64)
     private String event_name;
 
-    @Column(nullable = false, length = 150)
-    private String hackid;
+    private String hack_id;
 
     public CodingUser() {
     }
@@ -53,7 +73,7 @@ public class CodingUser {
         this.email = email;
         this.contact = contact;
         this.event_name = event_name;
-        this.hackid = hack_id;
+        this.hack_id = hack_id;
     }
 
     public String getEvent_name() {
@@ -128,11 +148,11 @@ public class CodingUser {
         this.contact = contact;
     }
 
-    public String getHackid() {
-        return hackid;
+    public String getHack_id() {
+        return hack_id;
     }
 
     public void setHack_id(String hack_id) {
-        this.hackid = hack_id;
+        this.hack_id = hack_id;
     }
 }
