@@ -5,6 +5,11 @@ package com.dynamics.website.model;
 
 //@Entity
 //@Table(name = "coding")
+
+import com.github.alperkurtul.firebaserealtimedatabase.annotation.FirebaseDocumentId;
+import com.github.alperkurtul.firebaserealtimedatabase.annotation.FirebaseDocumentPath;
+
+@FirebaseDocumentPath("/code_arena")
 public class CodingUser {
 
 //    @Id
@@ -38,6 +43,7 @@ public class CodingUser {
 //    @Column(nullable = false, length = 150)
 //    private String hack_id;
 
+    @FirebaseDocumentId
     private long coding_id;
 
     private String firstName;

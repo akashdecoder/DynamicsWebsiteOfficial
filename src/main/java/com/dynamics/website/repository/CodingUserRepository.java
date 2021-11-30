@@ -4,7 +4,7 @@ package com.dynamics.website.repository;
 import com.dynamics.website.model.CodingUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
+//
 //public interface CodingUserRepository extends JpaRepository<CodingUser, Long> {
 //
 //    @Query("select c from CodingUser c where c.email = ?1")

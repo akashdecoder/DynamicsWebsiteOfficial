@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 @Controller
@@ -68,6 +69,9 @@ public class CodingEventController {
     {
 
         codingUser.setBranch(UserUtils.getBranchName(codingUser.getUsn().substring(5, 7).toUpperCase()));
+        Random random = new Random();
+        long rand = random.nextLong();
+        codingUser.setCoding_id(rand);
         userServiceFirebase.saveUser(codingUser);
         return "registrationmessage";
     }
