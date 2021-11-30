@@ -2,8 +2,7 @@ package com.dynamics.website.repository;
 
 
 import com.dynamics.website.model.CodingUser;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 //
 //public interface CodingUserRepository extends JpaRepository<CodingUser, Long> {
 //
@@ -20,4 +19,10 @@ import org.springframework.data.jpa.repository.Query;
 //    public CodingUser findByFirstName(String name);
 //
 //    public CodingUser findByFirstNameOrHackidOrUsnOrEmail(String firstName, String hackid, String usn, String email);
+//}
+
+//@Repository
+//public class CodingUserRepository extends FirebaseRealtimeDbRepoServiceImpl<CodingUser, Long>
+//{
+//
 //}

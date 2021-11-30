@@ -1,15 +1,5 @@
 package com.dynamics.website.model;
 
-
-//import javax.persistence.*;
-
-//@Entity
-//@Table(name = "coding")
-
-import com.github.alperkurtul.firebaserealtimedatabase.annotation.FirebaseDocumentId;
-import com.github.alperkurtul.firebaserealtimedatabase.annotation.FirebaseDocumentPath;
-
-@FirebaseDocumentPath("/code_arena")
 public class CodingUser {
 
 //    @Id
@@ -43,8 +33,7 @@ public class CodingUser {
 //    @Column(nullable = false, length = 150)
 //    private String hack_id;
 
-    @FirebaseDocumentId
-    private long coding_id;
+    private String coding_id;
 
     private String firstName;
 
@@ -67,9 +56,22 @@ public class CodingUser {
     public CodingUser() {
     }
 
-    public CodingUser(long coding_id, String firstName, String lastName, String year, String branch, String usn,
-                      String email, long contact, String event_name, String hack_id) {
-        super();
+//    public CodingUser(long coding_id, String firstName, String lastName, String year, String branch, String usn,
+//                      String email, long contact, String event_name, String hack_id) {
+//        super();
+//        this.coding_id = coding_id;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.year = year;
+//        this.branch = branch;
+//        this.usn = usn;
+//        this.email = email;
+//        this.contact = contact;
+//        this.event_name = event_name;
+//        this.hack_id = hack_id;
+//    }
+
+    public CodingUser(String coding_id, String firstName, String lastName, String year, String branch, String usn, String email, long contact, String event_name, String hack_id) {
         this.coding_id = coding_id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,11 +92,11 @@ public class CodingUser {
         this.event_name = event_name;
     }
 
-    public long getCoding_id() {
+    public String getCoding_id() {
         return coding_id;
     }
 
-    public void setCoding_id(long coding_id) {
+    public void setCoding_id(String coding_id) {
         this.coding_id = coding_id;
     }
 

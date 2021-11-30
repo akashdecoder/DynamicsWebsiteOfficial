@@ -1,7 +1,6 @@
 package com.dynamics.website.controller;
 
 import com.dynamics.website.model.CodingUser;
-//import com.dynamics.website.repository.CodingUserRepository;
 import com.dynamics.website.service.UserServiceFirebase;
 import com.dynamics.website.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ import java.util.concurrent.ExecutionException;
 
 @Controller
 public class CodingEventController {
-
-//    @Autowired
-//    private CodingUserRepository codingUserRepository;
 
     @Autowired
     private UserServiceFirebase userServiceFirebase;
@@ -70,9 +66,12 @@ public class CodingEventController {
 
         codingUser.setBranch(UserUtils.getBranchName(codingUser.getUsn().substring(5, 7).toUpperCase()));
         Random random = new Random();
-        long rand = random.nextLong();
-        codingUser.setCoding_id(rand);
+        long rand = random.nextInt(100000000);
+
+        codingUser.setCoding_id(Long.toString(rand));
+
         userServiceFirebase.saveUser(codingUser);
+
         return "registrationmessage";
     }
 }
