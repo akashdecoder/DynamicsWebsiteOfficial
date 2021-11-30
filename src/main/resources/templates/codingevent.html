@@ -114,7 +114,7 @@
         <div class="section-title text-center">
             <h3>Register</h3>
         </div>
-        <form class="contact_form" th:action="@{/dynamics/events/addCoding}" th:object="${codingUser}" method="post">
+        <form class="contact_form" th:action="@{/codearena/addCoding}" th:object="${codingUser}" method="post">
             <!--            <p class="helper-text">* denotes a required field</p>-->
             <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
             <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>

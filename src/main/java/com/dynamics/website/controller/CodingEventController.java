@@ -63,7 +63,7 @@ public class CodingEventController {
 //        return "registrationmessage";
 //    }
 
-    @PostMapping("/addCoding")
+    @PostMapping("/codearena/addCoding")
     public String addUser(@Valid CodingUser codingUser, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException
     {
 
