@@ -69,4 +69,13 @@ public class UserServiceFirebase
 
         return Collections.<CodingUser>emptyList();
     }
+
+    public String deleteUser(String usn) throws InterruptedException, ExecutionException
+    {
+        Firestore firestore = FirestoreClient.getFirestore();
+
+        ApiFuture<WriteResult> writeResultApiFuture = firestore.collection(COL_NAME).document(usn).delete();
+
+        return "Deleted";
+    }
 }

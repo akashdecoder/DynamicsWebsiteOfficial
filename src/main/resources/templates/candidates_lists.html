@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title> Dynamics POC | Recruitments</title>
+    <title> Dynamics POC | Code Arena 21</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,6 +33,7 @@
                     <th>Email</th>
                     <th>Contact</th>
                     <th>Hackerrank_Id</th>
+                    <th>Timestamp</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -48,6 +49,7 @@
                     <td style="color: black">
                         <a th:href="@{${candidate.hack_id}}" th:text="${candidate.hack_id}"></a>
                     </td>
+                    <td style="color: black" th:text="${candidate.date}"></td>
 <!--                    <td>-->
 <!--                        <a  th:href="@{${candidate.fileUrl}}" th:text="${candidate.fileUrl}"></a>-->
 <!--                    </td>-->
@@ -59,7 +61,7 @@
 <!--                           th:text="${query.status} == 'Answered' ? 'Update' : 'Answer'">-->
 <!--                    </a></td>-->
                     <td><a style="color: white" class="btn btn-danger btn-lg"
-                           th:href="@{/delete/{id}(id=${candidate.coding_id})}">Delete
+                           th:href="@{/delete_user/{usn}(usn=${candidate.usn})}">Delete
                     </a></td>
                 </tr>
                 </tbody>

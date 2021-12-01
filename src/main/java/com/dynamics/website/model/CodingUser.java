@@ -1,5 +1,7 @@
 package com.dynamics.website.model;
 
+import com.google.api.client.util.DateTime;
+
 public class CodingUser {
 
 //    @Id
@@ -53,6 +55,8 @@ public class CodingUser {
 
     private String hack_id;
 
+    private String date;
+
     public CodingUser() {
     }
 
@@ -71,7 +75,7 @@ public class CodingUser {
 //        this.hack_id = hack_id;
 //    }
 
-    public CodingUser(String coding_id, String firstName, String lastName, String year, String branch, String usn, String email, long contact, String event_name, String hack_id) {
+    public CodingUser(String coding_id, String firstName, String lastName, String year, String branch, String usn, String email, long contact, String event_name, String hack_id, String date) {
         this.coding_id = coding_id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -82,6 +86,7 @@ public class CodingUser {
         this.contact = contact;
         this.event_name = event_name;
         this.hack_id = hack_id;
+        this.date = date;
     }
 
     public String getEvent_name() {
@@ -162,5 +167,13 @@ public class CodingUser {
 
     public void setHack_id(String hack_id) {
         this.hack_id = hack_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

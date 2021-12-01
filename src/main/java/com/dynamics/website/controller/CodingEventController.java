@@ -4,16 +4,18 @@ import com.dynamics.website.model.AppUser;
 import com.dynamics.website.model.CodingUser;
 import com.dynamics.website.service.UserServiceFirebase;
 import com.dynamics.website.utils.UserUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
@@ -70,7 +72,9 @@ public class CodingEventController {
         Random random = new Random();
         long rand = random.nextInt(100000000);
 
+        Date date = new Date();
         codingUser.setCoding_id(Long.toString(rand));
+        codingUser.setDate(date.toString());
 
         userServiceFirebase.saveUser(codingUser);
 
@@ -84,5 +88,12 @@ public class CodingEventController {
         model.addAttribute("candidates", candidates);
 
         return "candidates_lists";
+    }
+
+    @GetMapping("/delete_user/{usn}")
+    public String deleteUser(@PathVariable("usn") String usn, Model model, RedirectAttributes redirectAttributes) throws ExecutionException, InterruptedException {
+        String result = userServiceFirebase.deleteUser(usn);
+        redirectAttributes.addFlashAttribute("message", "Deleted Candidate: " +  usn);
+        return "redirect:/codearena/code_arena_lists";
     }
 }
