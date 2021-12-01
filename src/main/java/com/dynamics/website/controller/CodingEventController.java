@@ -1,11 +1,13 @@
 package com.dynamics.website.controller;
 
-import com.dynamics.website.model.AppUser;
 import com.dynamics.website.model.CodingUser;
+import com.dynamics.website.service.MailService;
 import com.dynamics.website.service.UserServiceFirebase;
 import com.dynamics.website.utils.UserUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +27,9 @@ public class CodingEventController {
 
     @Autowired
     private UserServiceFirebase userServiceFirebase;
+
+    @Autowired
+    private MailService mailService;
 
     @GetMapping("/")
     public String codePage(CodingUser codingUser)
@@ -67,14 +72,13 @@ public class CodingEventController {
     @PostMapping("/codearena/addCoding")
     public String addUser(@Valid CodingUser codingUser, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException
     {
-
-        codingUser.setBranch(UserUtils.getBranchName(codingUser.getUsn().substring(5, 7).toUpperCase()));
         Random random = new Random();
         long rand = random.nextInt(100000000);
 
         Date date = new Date();
         codingUser.setCoding_id(Long.toString(rand));
         codingUser.setDate(date.toString());
+        codingUser.setSentMail(Boolean.toString(Boolean.FALSE));
 
         userServiceFirebase.saveUser(codingUser);
 
@@ -94,6 +98,22 @@ public class CodingEventController {
     public String deleteUser(@PathVariable("usn") String usn, Model model, RedirectAttributes redirectAttributes) throws ExecutionException, InterruptedException {
         String result = userServiceFirebase.deleteUser(usn);
         redirectAttributes.addFlashAttribute("message", "Deleted Candidate: " +  usn);
+        return "redirect:/codearena/code_arena_lists";
+    }
+
+    @GetMapping("/sendingMail")
+    public String sendMail() throws ExecutionException, InterruptedException {
+        List<CodingUser> codingUsers = userServiceFirebase.getAllUsers();
+
+        for(CodingUser user : codingUsers) {
+            if(user.getSentMail().equals(Boolean.toString(Boolean.FALSE))) {
+                mailService.sendMail(user);
+                user.setSentMail(Boolean.toString(Boolean.TRUE));
+                userServiceFirebase.updateUser(user);
+                System.out.println("Sent Mail");
+            }
+        }
+
         return "redirect:/codearena/code_arena_lists";
     }
 }

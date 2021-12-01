@@ -34,6 +34,7 @@
                     <th>Contact</th>
                     <th>Hackerrank_Id</th>
                     <th>Timestamp</th>
+                    <th>Sent Mail</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <a th:href="@{${candidate.hack_id}}" th:text="${candidate.hack_id}"></a>
                     </td>
                     <td style="color: black" th:text="${candidate.date}"></td>
+                    <td style="color: black" th:text="${candidate.sentMail}"></td>
 <!--                    <td>-->
 <!--                        <a  th:href="@{${candidate.fileUrl}}" th:text="${candidate.fileUrl}"></a>-->
 <!--                    </td>-->

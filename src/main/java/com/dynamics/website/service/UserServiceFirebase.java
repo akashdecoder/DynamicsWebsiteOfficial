@@ -78,4 +78,13 @@ public class UserServiceFirebase
 
         return "Deleted";
     }
+
+    public String updateUser(CodingUser codingUser) throws InterruptedException, ExecutionException
+    {
+        Firestore firestore = FirestoreClient.getFirestore();
+
+        ApiFuture<WriteResult> writeResultApiFuture = firestore.collection(COL_NAME).document(codingUser.getUsn()).set(codingUser);
+
+        return writeResultApiFuture.get().getUpdateTime().toString();
+    }
 }

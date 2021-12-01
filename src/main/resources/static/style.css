@@ -30,6 +30,23 @@ body {
     line-height: 1.80857;
 }
 
+#back {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height:100%;
+}
+
+#date {
+    position: center;
+    color: white;
+}
+#type {
+    position: center;
+    color: white;
+}
+
 html, body{
     height: 100%;
 }
@@ -2867,5 +2884,3 @@ select.mobile-device {
 /*        margin-top: 0;*/
 /*    }*/
 /*}*/
-
-

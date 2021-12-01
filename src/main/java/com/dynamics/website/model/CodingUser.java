@@ -47,6 +47,8 @@ public class CodingUser {
 
     private String usn;
 
+    private String college;
+
     private String email;
 
     private long contact;
@@ -57,36 +59,28 @@ public class CodingUser {
 
     private String date;
 
+    private String sentMail;
+
+    private String idUrl;
+
     public CodingUser() {
     }
 
-//    public CodingUser(long coding_id, String firstName, String lastName, String year, String branch, String usn,
-//                      String email, long contact, String event_name, String hack_id) {
-//        super();
-//        this.coding_id = coding_id;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.year = year;
-//        this.branch = branch;
-//        this.usn = usn;
-//        this.email = email;
-//        this.contact = contact;
-//        this.event_name = event_name;
-//        this.hack_id = hack_id;
-//    }
-
-    public CodingUser(String coding_id, String firstName, String lastName, String year, String branch, String usn, String email, long contact, String event_name, String hack_id, String date) {
+    public CodingUser(String coding_id, String firstName, String lastName, String year, String branch, String usn, String college, String email, long contact, String event_name, String hack_id, String date, String sentMail, String idUrl) {
         this.coding_id = coding_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.year = year;
         this.branch = branch;
         this.usn = usn;
+        this.college = college;
         this.email = email;
         this.contact = contact;
         this.event_name = event_name;
         this.hack_id = hack_id;
         this.date = date;
+        this.sentMail = sentMail;
+        this.idUrl = idUrl;
     }
 
     public String getEvent_name() {
@@ -145,6 +139,14 @@ public class CodingUser {
         this.usn = usn;
     }
 
+    public String getCollege() {
+        return college;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -175,5 +177,21 @@ public class CodingUser {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getSentMail() {
+        return sentMail;
+    }
+
+    public void setSentMail(String sentMail) {
+        this.sentMail = sentMail;
+    }
+
+    public String getIdUrl() {
+        return idUrl;
+    }
+
+    public void setIdUrl(String idUrl) {
+        this.idUrl = idUrl;
     }
 }
