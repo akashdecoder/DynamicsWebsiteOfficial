@@ -1,5 +1,6 @@
 package com.dynamics.website.controller;
 
+import com.dynamics.website.model.AppUser;
 import com.dynamics.website.model.CodingUser;
 import com.dynamics.website.service.UserServiceFirebase;
 import com.dynamics.website.utils.UserUtils;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
@@ -73,5 +75,14 @@ public class CodingEventController {
         userServiceFirebase.saveUser(codingUser);
 
         return "registrationmessage";
+    }
+
+    @GetMapping("/codearena/code_arena_lists")
+    public String getCandidatesLists(Model model) {
+
+        List<CodingUser> candidates = userServiceFirebase.getAllUsers();
+        model.addAttribute("candidates", candidates);
+
+        return "candidates_lists";
     }
 }

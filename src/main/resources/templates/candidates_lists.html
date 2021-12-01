@@ -15,7 +15,7 @@
 <div class="section wb">
     <div class="container">
         <div class="section-title text-center">
-            <h3><b>Dynamics Recruitment Drive 2021 Candidates</b></h3>
+            <h3><b>Code Arena 2021 Candidates</b></h3>
             <hr>
         </div>
         <br>
@@ -32,22 +32,25 @@
                     <th>Branch</th>
                     <th>Email</th>
                     <th>Contact</th>
-                    <th>Resume</th>
+                    <th>Hackerrank_Id</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr class="" th:each="candidate: ${candidates}">
-                    <td style="color: black" th:text="${candidate.id}"></td>
+                    <td style="color: black" th:text="${candidate.coding_id}"></td>
                     <td style="color: black" th:text="${candidate.firstName} + ' ' + ${candidate.lastName}"></td>
                     <td style="color: black" th:text="${candidate.usn}"></td>
                     <td style="color: black" th:text="${candidate.year}"></td>
                     <td style="color: black" th:text="${candidate.branch}"></td>
                     <td style="color: black" th:text="${candidate.email}"></td>
                     <td style="color: black" th:text="${candidate.contact}"></td>
-                    <td>
-                        <a  th:href="@{${candidate.fileUrl}}" th:text="${candidate.fileUrl}"></a>
+                    <td style="color: black">
+                        <a th:href="@{${candidate.hack_id}}" th:text="${candidate.hack_id}"></a>
                     </td>
+<!--                    <td>-->
+<!--                        <a  th:href="@{${candidate.fileUrl}}" th:text="${candidate.fileUrl}"></a>-->
+<!--                    </td>-->
 <!--                    <td style="color: black"-->
 <!--                        th:style="${query.status} == 'Answered' ? 'color: green' : 'color: red'"-->
 <!--                        th:text="${query.status}"></td>-->
@@ -56,7 +59,7 @@
 <!--                           th:text="${query.status} == 'Answered' ? 'Update' : 'Answer'">-->
 <!--                    </a></td>-->
                     <td><a style="color: white" class="btn btn-danger btn-lg"
-                           th:href="@{/delete/{id}(id=${candidate.id})}">Delete
+                           th:href="@{/delete/{id}(id=${candidate.coding_id})}">Delete
                     </a></td>
                 </tr>
                 </tbody>

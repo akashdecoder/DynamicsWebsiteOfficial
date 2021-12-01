@@ -1,16 +1,17 @@
 package com.dynamics.website.service;
 
 import com.dynamics.website.model.CodingUser;
+
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.DocumentSnapshot;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -49,5 +50,23 @@ public class UserServiceFirebase
         } else {
             return null;
         }
+    }
+
+    public List<CodingUser> getAllUsers()
+    {
+
+        Firestore firestore = FirestoreClient.getFirestore();
+
+        CollectionReference collectionReference = firestore.collection(COL_NAME);
+        ApiFuture<QuerySnapshot> querySnapshotApiFuture = collectionReference.get();
+
+        try {
+            List<CodingUser> codingUserList = querySnapshotApiFuture.get().toObjects(CodingUser.class);
+            return codingUserList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return Collections.<CodingUser>emptyList();
     }
 }
