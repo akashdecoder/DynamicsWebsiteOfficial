@@ -27,6 +27,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>College</th>
                     <th>USN</th>
                     <th>Year</th>
                     <th>Branch</th>
@@ -43,6 +44,7 @@
                 <tr class="" th:each="candidate: ${candidates}">
                     <td style="color: black" th:text="${candidate.coding_id}"></td>
                     <td style="color: black" th:text="${candidate.firstName} + ' ' + ${candidate.lastName}"></td>
+                    <td style="color: black" th:text="${candidate.college}"></td>
                     <td style="color: black" th:text="${candidate.usn}"></td>
                     <td style="color: black" th:text="${candidate.year}"></td>
                     <td style="color: black" th:text="${candidate.branch}"></td>

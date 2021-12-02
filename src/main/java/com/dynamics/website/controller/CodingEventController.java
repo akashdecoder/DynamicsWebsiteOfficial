@@ -1,13 +1,11 @@
 package com.dynamics.website.controller;
 
 import com.dynamics.website.model.CodingUser;
+import com.dynamics.website.service.ExcelSheetGenerator;
 import com.dynamics.website.service.MailService;
 import com.dynamics.website.service.UserServiceFirebase;
-import com.dynamics.website.utils.UserUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -30,6 +29,9 @@ public class CodingEventController {
 
     @Autowired
     private MailService mailService;
+
+    @Autowired
+    private ExcelSheetGenerator excelSheetGenerator;
 
     @GetMapping("/")
     public String codePage(CodingUser codingUser)
@@ -110,9 +112,20 @@ public class CodingEventController {
                 mailService.sendMail(user);
                 user.setSentMail(Boolean.toString(Boolean.TRUE));
                 userServiceFirebase.updateUser(user);
-                System.out.println("Sent Mail");
+                System.out.println("Sent Mail To: " + user.getFirstName());
             }
         }
+
+        return "redirect:/codearena/code_arena_lists";
+    }
+
+    @GetMapping("/generateSheet")
+    public String generateSheet() throws IOException {
+        List<CodingUser> codingUsers = userServiceFirebase.getAllUsers();
+
+        excelSheetGenerator.generateCodingEventSheet(codingUsers);
+
+        System.out.println("Generate Sheet");
 
         return "redirect:/codearena/code_arena_lists";
     }

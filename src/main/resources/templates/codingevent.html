@@ -18,8 +18,11 @@
 <link type="text/css" rel="stylesheet" href="/css/responsive.css">
 <link type="text/css" rel="stylesheet" href="/css/custom.css">
 <script type="text/javascript" src="/js/modernizr.js"></script>
+<link href="http://fonts.cdnfonts.com/css/blanka" rel="stylesheet">
 
 <style>
+        @import url('http://fonts.cdnfonts.com/css/blanka');
+
         #abstract {
             text-align: left;
         }
@@ -38,12 +41,13 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="">
-            <img class="img-fluid" src="/mainimages/sit_f.png" width=50 height=50 alt="" />
-        </a>
+<!--        <a class="navbar-brand js-scroll-trigger" href="">-->
+<!--            <img class="img-fluid" src="/mainimages/sit_f.png" width=50 height=50 alt="" />-->
+<!--        </a>-->
         <a class="navbar-brand js-scroll-trigger" href="">
             <img class="img-fluid" src="/mainimages/ca3.png" width=250 height=50 alt="" />
         </a>
+<!--        <h1 style="font-size: 2vw; font-family: 'Blanka', sans-serif;"  class="nav-link js-scroll-trigger">&ensp;CODE ARENA 2021</h1>-->
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fa fa-bars"></i>
@@ -86,7 +90,7 @@
             <span>Department of Computer Science and Engineering </span>
         </h3>
         <h2 id="date">Presents</h2>
-        <h1 font-size="3em">CODE ARENA 2021</h1>
+        <h1 style="font-family: 'Blanka', sans-serif;" font-size="3em">CODE ARENA 2021</h1>
         <h3 class="cd-headline clip is-full-width">
             <span>AN ONLINE CODING BATTLE</span>
         </h3>
@@ -139,7 +143,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="wow fadeIn">
-                    <img style="width: auto; height: auto;" src="/mainimages/codearena_logo.png" alt="" class="img-fluid img-rounded">
+                    <img style="width: auto; height: auto;" src="/mainimages/code.png" alt="" class="img-fluid img-rounded">
                 </div>
             </div>
             <div class="col-md-6">
@@ -238,6 +242,12 @@
                     <div class="form-group">
                         <label class="form-label cf" for="lastName">Last name</label>
                         <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label" for="college">College</label>
+                        <input type="text" id="college" class="form-control" th:field="*{college}" required>
                     </div>
                 </div>
                 <div class="col-md-6">

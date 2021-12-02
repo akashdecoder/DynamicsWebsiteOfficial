@@ -1,12 +1,12 @@
-package com.dynamics.website.exceptions;
-
-public class FileStorageException extends RuntimeException {
-
-    public FileStorageException(String message) {
-        super(message);
-    }
-
-    public FileStorageException(String message, Throwable cause) {
-        super(message, cause);
-    }
-}
+//package com.dynamics.website.exceptions;
+//
+//public class FileStorageException extends RuntimeException {
+//
+//    public FileStorageException(String message) {
+//        super(message);
+//    }
+//
+//    public FileStorageException(String message, Throwable cause) {
+//        super(message, cause);
+//    }
+//}
