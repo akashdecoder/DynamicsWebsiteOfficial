@@ -7,6 +7,7 @@
 -------------------------------------------------------------------*/
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800');
+@import url('http://fonts.cdnfonts.com/css/blanka');
 
 /*------------------------------------------------------------------
     IMPORT FILES
@@ -18,7 +19,6 @@
 @import url(css/prettyPhoto.css);
 @import url(css/owl.carousel.css);
 @import url(css/font-awesome.min.css);
-@import url('http://fonts.cdnfonts.com/css/blanka');
 
 /*------------------------------------------------------------------
     SKELETON
