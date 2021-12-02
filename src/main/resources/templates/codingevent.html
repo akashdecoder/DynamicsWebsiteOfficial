@@ -170,7 +170,7 @@
         <div class="section-title">
             <h3>Event/Registration Details</h3>
             <br>
-            <p style="font-size:2em;"><b style="color:black">Download : </b><a href="https://drive.google.com/file/d/13KRaoSRJwKSVeEJNDcde3PX-Bhr9C4MW/view?usp=sharing" style="color: rgb(238, 200, 30);">click here</a></p>
+            <p style="font-size:2em;"><b style="color:black">Download : </b><a href="https://drive.google.com/file/d/1sz8pDistxgNq7_gL3Bd063qYw6nIndzz/view?usp=sharing" style="color: rgb(238, 200, 30);">click here</a></p>
         </div>
     </div>
 </div>
@@ -256,14 +256,15 @@
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="form-label" for="college">College</label>
+                        <label class="form-label" for="college">College (Full Name)</label>
                         <input type="text" id="college" class="form-control" th:field="*{college}" required>
                     </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label">Year</label>
-                        <select class="form-control" style="height: 54px" th:field="*{year}">
+                        <select class="form-control" style="height: 54px" th:field="*{year}" required>
                             <option value="0">--Select--</option>
                             <option value="1st Year"> 1st Year </option>
                             <option value="2nd Year"> 2nd Year </option>
@@ -293,7 +294,7 @@
 <!--                </div>-->
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label" for="branch">Branch</label>
+                        <label class="form-label" for="branch">Branch (Full Name)</label>
                         <input type="text" id="branch" class="form-control" th:field="*{branch}" required>
                     </div>
                 </div>
@@ -318,6 +319,28 @@
                         <input type="url" id="hack_id" class="form-control" th:field="*{hack_id}" required>
                     </div>
                 </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label" for="address">Present Address</label>
+                        <input type="text" id="address" class="form-control" th:field="*{presentAddress}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="cityState">City/State</label>
+                        <input type="text" id="cityState" class="form-control" th:field="*{cityState}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="pincode">Pincode</label>
+                        <input type="text" id="pincode" class="form-control" th:field="*{pincode}" required>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>

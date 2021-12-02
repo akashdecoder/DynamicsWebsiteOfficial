@@ -54,6 +54,12 @@ public class CodingUser {
 
     private @Getter @Setter String college;
 
+    private @Getter @Setter String presentAddress;
+
+    private @Getter @Setter String cityState;
+
+    private @Getter @Setter String pincode;
+
     private @Getter @Setter String email;
 
     private @Getter @Setter long contact;
