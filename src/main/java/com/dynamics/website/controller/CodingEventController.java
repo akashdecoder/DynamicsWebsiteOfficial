@@ -16,9 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 @Controller
@@ -77,6 +75,15 @@ public class CodingEventController {
         Random random = new Random();
         long rand = random.nextInt(100000000);
 
+        CodingUser user = userServiceFirebase.getUser(codingUser.getUsn());
+
+        if(user != null) {
+            if(user.getSentMail().equals(Boolean.toString(Boolean.TRUE)) == true) {
+                redirectAttributes.addFlashAttribute("warning", "Already Registered. Contact event organizer for updates.");
+                return "redirect:/";
+            }
+        }
+
         Date date = new Date();
         codingUser.setCoding_id(Long.toString(rand));
         codingUser.setDate(date.toString());
@@ -91,6 +98,12 @@ public class CodingEventController {
     public String getCandidatesLists(Model model) {
 
         List<CodingUser> candidates = userServiceFirebase.getAllUsers();
+        Collections.sort(candidates, new Comparator<CodingUser>() {
+            @Override
+            public int compare(CodingUser o1, CodingUser o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
         model.addAttribute("candidates", candidates);
 
         return "candidates_lists";

@@ -64,7 +64,7 @@ public class CodingUser {
 
     private @Getter @Setter long contact;
 
-    private @Getter @Setter String event_name;
+//    private @Getter @Setter String event_name;
 
     private @Getter @Setter String hack_id;
 
