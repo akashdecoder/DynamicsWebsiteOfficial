@@ -108,6 +108,7 @@
             <artifactId>sendgrid-java</artifactId>
             <version>4.8.1</version>
         </dependency>
+
     </dependencies>
 
     <build>

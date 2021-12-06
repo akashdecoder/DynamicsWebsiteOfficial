@@ -23,7 +23,7 @@ public class MailService
         mailMessage.setTo(codingUser.getEmail());
 
         String mailSubject = "CODE ARENA 2021 Registration Success";
-        String mailContent = "Thank You " + "<b>" +  codingUser.getFirstName() + " " + codingUser.getLastName() + "</b>" +" for registering to CODE ARENA 2021.\n\nKeep in touch to know more updates.";
+        String mailContent = "Thank You "  +  codingUser.getFirstName() + " " + codingUser.getLastName() + " for registering to CODE ARENA 2021.\n\nKeep in touch to know more updates.";
         mailContent = mailContent + "\n\nWith Regards,\nDynamics\n(Project Oriented Community)";
 
         mailMessage.setSubject(mailSubject);

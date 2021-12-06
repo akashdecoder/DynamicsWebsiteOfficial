@@ -28,7 +28,7 @@ public class ExcelSheetGenerator
 
         Map<String, Object[]> sheetData = new TreeMap<String, Object[]>();
 
-        sheetData.put("1", new Object[]{"Id", "Name", "College", "USN", "Year", "Branch", "Email", "Contact", "Hackerrank Id", "Address", "City/State", "Pincode",  "ImageDriveLink", "TimeStamp"});
+        sheetData.put("1", new Object[]{"Id", "Name", "College", "USN", "Year", "Branch", "Email", "Contact", "Hackerrank Id", "Address", "City/State", "Pincode", "TimeStamp"});
 
         for(CodingUser user : users) {
             sheetData.put(Integer.toString(a), new Object[]{
@@ -44,7 +44,6 @@ public class ExcelSheetGenerator
                     user.getPresentAddress(),
                     user.getCityState(),
                     user.getPincode(),
-                    user.getIdUrl(),
                     user.getDate()
             });
             a++;

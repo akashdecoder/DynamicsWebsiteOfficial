@@ -1,7 +1,9 @@
 package com.dynamics.website.controller;
 
 import com.dynamics.website.model.CodingUser;
+import com.dynamics.website.model.FileUser;
 import com.dynamics.website.service.ExcelSheetGenerator;
+import com.dynamics.website.service.FileService;
 import com.dynamics.website.service.MailService;
 import com.dynamics.website.service.UserServiceFirebase;
 
@@ -12,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -22,6 +26,8 @@ import java.util.concurrent.ExecutionException;
 @Controller
 public class CodingEventController {
 
+//    private StorageOptions storageOptions;
+
     @Autowired
     private UserServiceFirebase userServiceFirebase;
 
@@ -30,6 +36,9 @@ public class CodingEventController {
 
     @Autowired
     private ExcelSheetGenerator excelSheetGenerator;
+
+    @Autowired
+    private FileService fileService;
 
     @GetMapping("/")
     public String codePage(CodingUser codingUser)
@@ -70,8 +79,7 @@ public class CodingEventController {
 //    }
 
     @PostMapping("/codearena/addCoding")
-    public String addUser(@Valid CodingUser codingUser, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException
-    {
+    public String addUser(@Valid CodingUser codingUser, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException, IOException {
         Random random = new Random();
         long rand = random.nextInt(100000000);
 
@@ -88,6 +96,21 @@ public class CodingEventController {
         codingUser.setCoding_id(Long.toString(rand));
         codingUser.setDate(date.toString());
         codingUser.setSentMail(Boolean.toString(Boolean.FALSE));
+//        FileUser fileUser = new FileUser();
+//        fileUser.setMultipartFile(multipartFile);
+//        fileService.upload(multipartFile, codingUser);
+
+//        Storage storage = storageOptions.getService();
+//
+//        Blob blob = storage.get(BlobId.of("dynamicspoc-95ae9.appspot.com", codingUser.getUsn()));
+//        ReadChannel readChannel = blob.reader();
+//        InputStream inputStream = Channels.newInputStream(readChannel);
+//        byte[] content = null;
+//        content = IOUtils.toByteArray(inputStream);
+//        final ByteArrayResource byteArrayResource = new ByteArrayResource(content);
+//
+//        codingUser.setFileUrl(byteArrayResource);
+//        System.out.println(byteArrayResource.toString());
 
         userServiceFirebase.saveUser(codingUser);
 

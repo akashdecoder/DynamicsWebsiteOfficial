@@ -37,7 +37,6 @@
                     <th>Address</th>
                     <th>City/State</th>
                     <th>Pincode</th>
-                    <th>Image Drive Link</th>
                     <th>Timestamp</th>
                     <th>Sent Mail</th>
 <!--                    <th>Action</th>-->
@@ -59,9 +58,6 @@
                     <td style="color: black" th:text="${candidate.presentAddress}"></td>
                     <td style="color: black" th:text="${candidate.cityState}"></td>
                     <td style="color: black" th:text="${candidate.pincode}"></td>
-                    <td style="color: black">
-                        <a th:href="@{${candidate.idUrl}}" th:text="${candidate.idUrl}"></a>
-                    </td>
                     <td style="color: black" th:text="${candidate.date}"></td>
                     <td style="color: black" th:text="${candidate.sentMail}"></td>
 <!--                    <td>-->

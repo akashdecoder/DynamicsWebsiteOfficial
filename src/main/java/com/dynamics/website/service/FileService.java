@@ -1,43 +1,71 @@
-//package com.dynamics.website.service;
-//
-//import com.dynamics.website.exceptions.FileStorageException;
-//import com.dynamics.website.exceptions.MyFileNotFoundException;
-//import com.dynamics.website.model.AppUser;
-//import com.dynamics.website.model.FileUser;
-//import com.dynamics.website.repository.AppUserRepository;
-//import com.dynamics.website.repository.FileUserRepository;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.util.StringUtils;
-//import org.springframework.web.multipart.MultipartFile;
-//
-//import java.io.IOException;
-//
-//@Service
-//public class FileService {
-//
-//    @Autowired
-//    private FileUserRepository fileUserRepository;
-//
-//    @Autowired
-//    private AppUserRepository appUserRepository;
-//
-//    public FileUser storeFile(MultipartFile multipartFile) {
-//        String filename = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//
-//        try {
-//            if(filename.contains("..")) {
-//                throw new FileStorageException("Invalid Path" + filename);
-//            }
-//            FileUser fileUser = new FileUser(filename, multipartFile.getContentType(), multipartFile.getBytes());
-//            return fileUserRepository.save(fileUser);
-//        } catch (IOException e) {
-//            throw new FileStorageException("Could not store file " + filename + ". Please try again!", e);
-//        }
-//    }
-//
-//    public FileUser getFile(String fileId) {
-//        return fileUserRepository.findById(fileId)
-//                .orElseThrow(() -> new MyFileNotFoundException("File not found with id " + fileId));
-//    }
-//}
+package com.dynamics.website.service;
+
+import com.dynamics.website.model.CodingUser;
+import com.dynamics.website.model.FileUser;
+import com.google.auth.Credentials;
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.storage.BlobId;
+import com.google.cloud.storage.BlobInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.*;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+
+@Service
+public class FileService
+{
+
+    private static String TEMP_URL = "";
+    private static final String DOWNLOAD_URL = "";
+
+    public String uploadFile(File file, String fileName) throws IOException {
+        BlobId blobId = BlobId.of("dynamicspoc-95ae9.appspot.com", fileName);
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId)
+                .setContentType("application/pdf")
+                .build();
+
+        Credentials credentials = GoogleCredentials.fromStream(new FileInputStream("src/main/resources/dynamicspoc-95ae9-firebase-adminsdk-v2gz6-4b8fc1eec3.json"));
+        Storage storage = StorageOptions.newBuilder()
+                .setCredentials(credentials).build().getService();
+        storage.create(blobInfo, Files.readAllBytes(file.toPath()));
+        return String.format(DOWNLOAD_URL, URLEncoder.encode(fileName,  "UTF-8"));
+    }
+
+    private File convertToFile(MultipartFile multipartFile, String fileName) throws IOException {
+        File tempFile = new File(fileName);
+        try (FileOutputStream fos = new FileOutputStream(tempFile)) {
+            fos.write(multipartFile.getBytes());
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return tempFile;
+    }
+
+    private String getExtension(String fileName) {
+    return fileName.substring(fileName.lastIndexOf("."));
+}
+
+    public String upload(MultipartFile multipartFile, CodingUser codingUser) throws IOException{
+        FileUser fileUser = new FileUser();
+        try {
+            System.out.println(multipartFile);
+            String fileName = multipartFile.getOriginalFilename();
+            fileName = codingUser.getUsn();
+
+            File file = this.convertToFile(multipartFile, fileName);
+            TEMP_URL = this.uploadFile(file, fileName);
+            file.delete();
+            return TEMP_URL;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Hello";
+        }
+    }
+}
