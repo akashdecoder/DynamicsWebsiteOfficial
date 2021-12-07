@@ -12,13 +12,20 @@
     <artifactId>website</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>website</name>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <description>Official Website for Dynamics Project Oriented Community</description>
     <properties>
         <java.version>8</java.version>
     </properties>
 
     <dependencies>
+         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
+         <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-tomcat</artifactId>
+             <version>2.6.1</version>
+         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
