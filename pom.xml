@@ -12,7 +12,7 @@
     <artifactId>website</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>website</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <description>Official Website for Dynamics Project Oriented Community</description>
     <properties>
         <java.version>8</java.version>
