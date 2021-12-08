@@ -52,32 +52,6 @@ public class CodingEventController {
         return "codingevent.html";
     }
 
-//    @PostMapping("addCoding")
-//    public String addUser(@Valid CodingUser codingUser, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException {
-//        if(result.hasErrors()) {
-//            return "/dynamics/events";
-//        }
-//        if(codingUserRepository.findByEmail(codingUser.getEmail()) != null) {
-//            redirectAttributes.addFlashAttribute("warning", "Email Already exists");
-//            return "redirect:/dynamics/events/coding";
-//        }
-//        if(codingUserRepository.findByFirstName(codingUser.getFirstName()) != null) {
-//            redirectAttributes.addFlashAttribute("warning", "Name Already exists");
-//            return "redirect:/dynamics/events/coding";
-//        }
-//        if(codingUserRepository.findByUsn(codingUser.getUsn()) != null) {
-//            redirectAttributes.addFlashAttribute("warning", "Usn Already exists");
-//            return "redirect:/dynamics/events/coding";
-//        }
-//        if(codingUserRepository.findByHackid(codingUser.getHackid()) != null) {
-//            redirectAttributes.addFlashAttribute("warning", "HackerRank Id Already exists. Please Use different Id");
-//            return "redirect:/dynamics/events/coding";
-//        }
-//        codingUser.setBranch(UserUtils.getBranchName(codingUser.getUsn().substring(5, 7).toUpperCase()));
-//        codingUserRepository.save(codingUser);
-//        return "registrationmessage";
-//    }
-
     @PostMapping("/codearena/addCoding")
     public String addUser(@Valid CodingUser codingUser, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException, IOException {
         Random random = new Random();
@@ -127,6 +101,7 @@ public class CodingEventController {
                 return o1.getDate().compareTo(o2.getDate());
             }
         });
+        model.addAttribute("count", candidates.size());
         model.addAttribute("candidates", candidates);
 
         return "candidates_lists";
