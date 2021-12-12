@@ -95,12 +95,6 @@ public class CodingEventController {
     public String getCandidatesLists(Model model) {
 
         List<CodingUser> candidates = userServiceFirebase.getAllUsers();
-        Collections.sort(candidates, new Comparator<CodingUser>() {
-            @Override
-            public int compare(CodingUser o1, CodingUser o2) {
-                return o1.getDate().compareTo(o2.getDate());
-            }
-        });
         model.addAttribute("count", candidates.size());
         model.addAttribute("candidates", candidates);
 
