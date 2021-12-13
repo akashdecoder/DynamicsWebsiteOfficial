@@ -95,13 +95,20 @@ public class CodingEventController {
     public String getCandidatesLists(Model model) {
 
         int count =0;
-        List<CodingUser> candidates = userServiceFirebase.getAllUsers();
+        List<CodingUser> users = userServiceFirebase.getAllUsers();
         List<CodingUser> newRegs = new ArrayList<CodingUser>();
+        List<CodingUser> candidates = new ArrayList<CodingUser>();
 
-        for(CodingUser user : candidates) {
+        for(CodingUser user : users) {
             if(user.getSentMail().equals(Boolean.toString(Boolean.FALSE))) {
                 newRegs.add(user);
                 count ++;
+            }
+        }
+
+        for(CodingUser user : users) {
+            if(user.getSentMail().equals(Boolean.toString(Boolean.TRUE))) {
+                candidates.add(user);
             }
         }
 
