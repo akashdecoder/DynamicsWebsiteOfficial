@@ -12,12 +12,81 @@
 </head>
 <body>
 
+
 <div class="section wb">
     <div class="container">
         <div class="section-title text-center">
             <h3><b>Code Arena 2021 Candidates</b></h3>
-            <h2>Registration Count: [[${count}]]</h2>
             <h2>New Registrations: [[${new_reg}]]</h2>
+            <hr>
+        </div>
+        <br>
+        <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
+        <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
+        <div class="table-responsive">
+            <table  class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>College</th>
+                    <th>USN</th>
+                    <th>Year</th>
+                    <th>Branch</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Hackerrank_Id</th>
+                    <th>Address</th>
+                    <th>City/State</th>
+                    <th>Pincode</th>
+                    <th>Timestamp</th>
+                    <th>Sent Mail</th>
+                    <!--                    <th>Action</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="" th:each="newRegs: ${newRegs}">
+                    <td style="color: black" th:text="${newRegs.coding_id}"></td>
+                    <td style="color: black" th:text="${newRegs.firstName} + ' ' + ${newRegs.lastName}"></td>
+                    <td style="color: black" th:text="${newRegs.college}"></td>
+                    <td style="color: black" th:text="${newRegs.usn}"></td>
+                    <td style="color: black" th:text="${newRegs.year}"></td>
+                    <td style="color: black" th:text="${newRegs.branch}"></td>
+                    <td style="color: black" th:text="${newRegs.email}"></td>
+                    <td style="color: black" th:text="${newRegs.contact}"></td>
+                    <td style="color: black">
+                        <a th:href="@{${newRegs.hack_id}}" th:text="${newRegs.hack_id}"></a>
+                    </td>
+                    <td style="color: black" th:text="${newRegs.presentAddress}"></td>
+                    <td style="color: black" th:text="${newRegs.cityState}"></td>
+                    <td style="color: black" th:text="${newRegs.pincode}"></td>
+                    <td style="color: black" th:text="${newRegs.date}"></td>
+                    <td style="color: black" th:text="${newRegs.sentMail}"></td>
+                    <!--                    <td>-->
+                    <!--                        <a  th:href="@{${candidate.fileUrl}}" th:text="${candidate.fileUrl}"></a>-->
+                    <!--                    </td>-->
+                    <!--                    <td style="color: black"-->
+                    <!--                        th:style="${query.status} == 'Answered' ? 'color: green' : 'color: red'"-->
+                    <!--                        th:text="${query.status}"></td>-->
+                    <!--                    <td><a style="color: white" class="btn btn-warning btn-lg"-->
+                    <!--                           th:href="@{/query/{q_id}(q_id=${query.q_id})}"-->
+                    <!--                           th:text="${query.status} == 'Answered' ? 'Update' : 'Answer'">-->
+                    <!--                    </a></td>-->
+                    <!--                    <td><a style="color: white" class="btn btn-danger btn-lg"-->
+                    <!--                           th:href="@{/delete_user/{usn}(usn=${candidate.usn})}">Delete-->
+                    <!--                    </a></td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3><b>Code Arena 2021 Confirmed Candidates</b></h3>
+            <h2>Registration Count: [[${count}]]</h2>
             <hr>
         </div>
         <br>

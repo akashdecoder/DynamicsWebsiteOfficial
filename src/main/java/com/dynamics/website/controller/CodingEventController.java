@@ -96,14 +96,18 @@ public class CodingEventController {
 
         int count =0;
         List<CodingUser> candidates = userServiceFirebase.getAllUsers();
+        List<CodingUser> newRegs = new ArrayList<CodingUser>();
 
         for(CodingUser user : candidates) {
             if(user.getSentMail().equals(Boolean.toString(Boolean.FALSE))) {
+                newRegs.add(user);
                 count ++;
             }
         }
+
         model.addAttribute("new_reg", count);
         model.addAttribute("count", candidates.size());
+        model.addAttribute("newRegs", newRegs);
         model.addAttribute("candidates", candidates);
 
         return "candidates_lists";
