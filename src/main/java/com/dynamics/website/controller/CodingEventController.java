@@ -94,7 +94,15 @@ public class CodingEventController {
     @GetMapping("/codearena/code_arena_lists")
     public String getCandidatesLists(Model model) {
 
+        int count =0;
         List<CodingUser> candidates = userServiceFirebase.getAllUsers();
+
+        for(CodingUser user : candidates) {
+            if(user.getSentMail().equals(Boolean.toString(Boolean.FALSE))) {
+                count ++;
+            }
+        }
+        model.addAttribute("new_reg", count);
         model.addAttribute("count", candidates.size());
         model.addAttribute("candidates", candidates);
 
