@@ -236,163 +236,163 @@
     </div>
 </div>
 
-<div id="register" class="section db" style="background: white;">
-    <div class="container">
-        <div class="section-title text-center">
-            <h3>Register</h3>
-            <h2>Registration deadline is extended to 15 December 2021</h2>
-        </div>
-        <form class="contact_form" th:action="@{/codearena/addCoding}" th:object="${codingUser}" method="post">
-            <!--            <p class="helper-text">* denotes a required field</p>-->
-            <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
-            <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
-
-            <div class="row g-3" style="justify-content: center;">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="firstName">First name</label>
-                        <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label cf" for="lastName">Last name</label>
-                        <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="form-label" for="college">College (Full Name)</label>
-                        <input type="text" id="college" class="form-control" th:field="*{college}" required>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label">Year</label>
-                        <select class="form-control" style="height: 54px" th:field="*{year}" required>
-                            <option value="0">--Select--</option>
-                            <option value="1st Year"> 1st Year </option>
-                            <option value="2nd Year"> 2nd Year </option>
-                            <option value="3rd Year"> 3rd Year </option>
-                            <option value="4th Year"> 4th Year </option>
-                        </select>
-                    </div>
-                </div>
-<!--                <div class="col-md-6">-->
-<!--                    <div class="form-group">-->
-<!--                        <label class="form-label">Branch</label>-->
-<!--                        <select class="form-control" th:field="*{branch}" required>-->
-<!--                            <option value="0">--Select--</option>-->
-<!--                            <option value="BIO">Bio Technology</option>-->
-<!--                            <option value="CHEM">Chemical Engineering</option>-->
-<!--                            <option value="CIVIL">Civil Engineering</option>-->
-<!--                            <option value="CSE"> Computer ScienceEngineering </option>-->
-<!--                            <option value="ISE">Information Science Engineering</option>-->
-<!--                            <option value="EEE">Electrical Electronics Engineering</option>-->
-<!--                            <option value="ECE">Electronics Communication Engineering</option>-->
-<!--                            <option value="EIE">Electronics Instrumentation Engineering</option>-->
-<!--                            <option value="MECH">Mechanical Engineering</option>-->
-<!--                            <option value="TEL">Telecommunication Engineering</option>-->
-<!--                            <option value="OTHERS">Others</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="branch">Branch (Full Name)</label>
-                        <input type="text" id="branch" class="form-control" th:field="*{branch}" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="usn">University Registration Number</label>
-                        <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
-                    </div>
-                </div>
-<!--                <div class="col-md-6">-->
-<!--                    <div class="form-group">-->
-<!--                        <label class="form-label">Event</label>-->
-<!--                        <select class="form-control" style="height: 54px" th:field="*{event_name}">-->
-<!--                            <option value="0">--Select--</option>-->
-<!--                            <option value="CODE@ARENA">CODE@ARENA</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label">HackerRank ID</label>
-                        <input type="url" id="hack_id" class="form-control" th:field="*{hack_id}" required>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label class="form-label" for="address">Present Address</label>
-                        <input type="text" id="address" class="form-control" th:field="*{presentAddress}" required>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="cityState">City/State</label>
-                        <input type="text" id="cityState" class="form-control" th:field="*{cityState}" required>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="pincode">Pincode</label>
-                        <input type="text" id="pincode" class="form-control" th:field="*{pincode}" required>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" class="form-control" th:field="*{email}" required>
-
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="tel">Contact Number</label>
-                        <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>
-                    </div>
-                </div>
-<!--                <div class="col-md-12">-->
-<!--                    <div class="form-group">-->
-<!--                        <label class="form-label">ID Card Drive Link (Upload Your College ID Card in Drive and share that link. Give access to dynamicspoc19.cse@sit.ac.in)</label>-->
-<!--                        <input type="url" id="id_url" class="form-control" th:field="*{idUrl}" required>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                <div class="col-md-12">-->
-<!--                    <div class="form-group">-->
-<!--                        <label class="form-label" for="file">Upload ID Card (PDF Only)</label>-->
-<!--                        <input type="file" name="File" id="file" accept="application/pdf" class="form-control-file" required>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-                <div class="col-lg-12 text-center">
-                    <button class="sim-btn btn-success hvr-bounce-to-top btn-lg"
-                            value="Register"><b>Register</b>
-                    </button>
-                    <button type="reset" class="sim-btn btn-warning hvr-bounce-to-top btn-lg" value="Clear"><b>Clear</b>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!--<div id="register" class="section wb">-->
+<!--<div id="register" class="section db" style="background: white;">-->
 <!--    <div class="container">-->
 <!--        <div class="section-title text-center">-->
-<!--            <h3>Registration will Open Tomorrow at 1:30 PM</h3>-->
+<!--            <h3>Register</h3>-->
+<!--            <h2>Registration deadline is extended to 15 December 2021</h2>-->
 <!--        </div>-->
+<!--        <form class="contact_form" th:action="@{/codearena/addCoding}" th:object="${codingUser}" method="post">-->
+<!--            &lt;!&ndash;            <p class="helper-text">* denotes a required field</p>&ndash;&gt;-->
+<!--            <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>-->
+<!--            <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>-->
+
+<!--            <div class="row g-3" style="justify-content: center;">-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="firstName">First name</label>-->
+<!--                        <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label cf" for="lastName">Last name</label>-->
+<!--                        <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="college">College (Full Name)</label>-->
+<!--                        <input type="text" id="college" class="form-control" th:field="*{college}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label">Year</label>-->
+<!--                        <select class="form-control" style="height: 54px" th:field="*{year}" required>-->
+<!--                            <option value="0">&#45;&#45;Select&#45;&#45;</option>-->
+<!--                            <option value="1st Year"> 1st Year </option>-->
+<!--                            <option value="2nd Year"> 2nd Year </option>-->
+<!--                            <option value="3rd Year"> 3rd Year </option>-->
+<!--                            <option value="4th Year"> 4th Year </option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="form-label">Branch</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <select class="form-control" th:field="*{branch}" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="0">&#45;&#45;Select&#45;&#45;</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="BIO">Bio Technology</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="CHEM">Chemical Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="CIVIL">Civil Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="CSE"> Computer ScienceEngineering </option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="ISE">Information Science Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="EEE">Electrical Electronics Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="ECE">Electronics Communication Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="EIE">Electronics Instrumentation Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="MECH">Mechanical Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="TEL">Telecommunication Engineering</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="OTHERS">Others</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="branch">Branch (Full Name)</label>-->
+<!--                        <input type="text" id="branch" class="form-control" th:field="*{branch}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="usn">University Registration Number</label>-->
+<!--                        <input type="text" id="usn" class="form-control" th:field="*{usn}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="form-label">Event</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <select class="form-control" style="height: 54px" th:field="*{event_name}">&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="0">&#45;&#45;Select&#45;&#45;</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <option value="CODE@ARENA">CODE@ARENA</option>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </select>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label">HackerRank ID</label>-->
+<!--                        <input type="url" id="hack_id" class="form-control" th:field="*{hack_id}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="address">Present Address</label>-->
+<!--                        <input type="text" id="address" class="form-control" th:field="*{presentAddress}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="cityState">City/State</label>-->
+<!--                        <input type="text" id="cityState" class="form-control" th:field="*{cityState}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="pincode">Pincode</label>-->
+<!--                        <input type="text" id="pincode" class="form-control" th:field="*{pincode}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="email">Email</label>-->
+<!--                        <input type="email" id="email" class="form-control" th:field="*{email}" required>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="tel">Contact Number</label>-->
+<!--                        <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="col-md-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="form-label">ID Card Drive Link (Upload Your College ID Card in Drive and share that link. Give access to dynamicspoc19.cse@sit.ac.in)</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="url" id="id_url" class="form-control" th:field="*{idUrl}" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="col-md-12">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="form-label" for="file">Upload ID Card (PDF Only)</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="file" name="File" id="file" accept="application/pdf" class="form-control-file" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+
+<!--                <div class="col-lg-12 text-center">-->
+<!--                    <button class="sim-btn btn-success hvr-bounce-to-top btn-lg"-->
+<!--                            value="Register"><b>Register</b>-->
+<!--                    </button>-->
+<!--                    <button type="reset" class="sim-btn btn-warning hvr-bounce-to-top btn-lg" value="Clear"><b>Clear</b>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
 <!--    </div>-->
 <!--</div>-->
+
+<div id="register" class="section wb">
+    <div class="container">
+        <div class="section-title text-center">
+            <h3>Registration is closed.</h3>
+        </div>
+    </div>
+</div>
 
 <div class="container">
     <div class="section-title text-center">

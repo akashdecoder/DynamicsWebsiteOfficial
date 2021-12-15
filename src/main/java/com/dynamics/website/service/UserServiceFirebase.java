@@ -84,6 +84,7 @@ public class UserServiceFirebase
         Firestore firestore = FirestoreClient.getFirestore();
 
         ApiFuture<WriteResult> writeResultApiFuture = firestore.collection(COL_NAME).document(codingUser.getUsn()).set(codingUser);
+        codingUser.setUsn(codingUser.getUsn().toUpperCase());
 
         return writeResultApiFuture.get().getUpdateTime().toString();
     }

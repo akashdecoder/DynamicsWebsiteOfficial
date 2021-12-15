@@ -70,6 +70,7 @@ public class CodingEventController {
         codingUser.setCoding_id(Long.toString(rand));
         codingUser.setDate(date.toString());
         codingUser.setSentMail(Boolean.toString(Boolean.FALSE));
+        codingUser.setUsn(codingUser.getUsn().toUpperCase());
 //        FileUser fileUser = new FileUser();
 //        fileUser.setMultipartFile(multipartFile);
 //        fileService.upload(multipartFile, codingUser);
@@ -92,7 +93,7 @@ public class CodingEventController {
     }
 
     @GetMapping("/codearena/code_arena_lists")
-    public String getCandidatesLists(Model model) {
+    public String getCandidatesLists(Model model) throws ExecutionException, InterruptedException {
 
         int count =0;
         List<CodingUser> users = userServiceFirebase.getAllUsers();
