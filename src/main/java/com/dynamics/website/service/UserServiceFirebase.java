@@ -2,6 +2,7 @@ package com.dynamics.website.service;
 
 import com.dynamics.website.model.CodingUser;
 
+import com.dynamics.website.model.Winner;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
@@ -68,6 +69,24 @@ public class UserServiceFirebase
         }
 
         return Collections.<CodingUser>emptyList();
+    }
+
+    public List<Winner> getAllWinners()
+    {
+
+        Firestore firestore = FirestoreClient.getFirestore();
+
+        CollectionReference collectionReference = firestore.collection("code_arena_lists");
+        ApiFuture<QuerySnapshot> querySnapshotApiFuture = collectionReference.get();
+
+        try {
+            List<Winner> codingUserList = querySnapshotApiFuture.get().toObjects(Winner.class);
+            return codingUserList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return Collections.<Winner>emptyList();
     }
 
     public String deleteUser(String usn) throws InterruptedException, ExecutionException

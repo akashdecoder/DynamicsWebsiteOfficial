@@ -2,6 +2,7 @@ package com.dynamics.website.controller;
 
 import com.dynamics.website.model.CodingUser;
 import com.dynamics.website.model.FileUser;
+import com.dynamics.website.model.Winner;
 import com.dynamics.website.service.ExcelSheetGenerator;
 import com.dynamics.website.service.FileService;
 import com.dynamics.website.service.MailService;
@@ -41,8 +42,10 @@ public class CodingEventController {
     private FileService fileService;
 
     @GetMapping("/")
-    public String codePage(CodingUser codingUser)
+    public String codePage(CodingUser codingUser, Model model)
     {
+        List<Winner> winners = userServiceFirebase.getAllWinners();
+        model.addAttribute("winners", winners);
         return "codingevent.html";
     }
 
