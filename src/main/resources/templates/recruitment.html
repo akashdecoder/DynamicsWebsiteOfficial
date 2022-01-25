@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Dynamics | Recruitments 2022</title>
+
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Dynamics Project Oriented Community">
+<meta name="author" content="Dynamics Project Oriented Community">
+<meta name="keywords" content="Dynamics Project Oriented Community">
+
+<link rel="shortcut icon" href="/mainimages/logo1.png" type="image/x-icon" >
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/style.css">
+<link rel="stylesheet" type="text/css" href="/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="/css/custom.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<script type="text/javascript" src="/js/modernizr.js"></script>
+
+</head>
+
+<body id="page-top" class="politics_version" style="background: url('mainimages/logo1.png')">
+
+<div id="preloader">
+    <div id="main-ld">
+        <div id="loader"></div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <img class="img-fluid" src="BOSE.jpg" alt="" />
+        </a>
+        <!--        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            Menu-->
+<!--            <i class="fa fa-bars"></i>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarResponsive">-->
+<!--            <ul class="navbar-nav text-uppercase ml-auto">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics">Home</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics/aboutus">About Us</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics/portfolio">Portfolio</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics/project">Projects & Achievements</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics/events">Events</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics/recruitment">Recruitments</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics/team">Our Team</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link js-scroll-trigger" href="/dynamics/contactus">Contact Us</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+    </div>
+</nav>
+
+<!--<section id="home" class="main-banner parallaxie" style="background: url('/mainimages/recruit.jpg')">-->
+<!--    <div class="heading">-->
+<!--        <h1>DYNAMICS</h1>-->
+<!--        <h3 class="cd-headline clip is-full-width">-->
+<!--            <span>Join Our Team </span>-->
+<!--        </h3>-->
+<!--    </div>-->
+<!--</section>-->
+
+<div id="contact" class="section db">
+    <div class="container">
+        <div class="section-title text-center">
+            <img src="/mainimages/logo1.png">
+            <h1><b>Dynamics Project Oriented Community Recruitments 2022</b></h1>
+            <hr>
+        </div>
+        <p><b>Rules and Regulations</b>
+        <ul style="color: #414141;">
+            <li>
+                1. Register with your college email ID or mail id with usn.
+            </li>
+            <li>
+                2. All the fields are mandatory. Don't provide wrong details.
+            </li>
+            <li>
+                3. If you are facing any kinds of errors during registration, mail your details based on the form to <a href="mailto: dynamicspoc19.cse@sit.ac.in">dynamicspoc19.cse@sit.ac.in</a>.
+            </li>
+            <li>
+                4. After registration please join the WhatsApp group provided on the success page and check mails frequently to receive further instructions.
+            </li>
+            <li>
+                5. Visit <a href="http://www.dynamicspoc.in/">www.dynamicspoc.in</a> to know about us.
+            </li>
+        </ul>
+        </p>
+<!--        <hr>-->
+<!--        <p>-->
+<!--            <b style="font-size: large">Download Resume Format: </b>-->
+<!--            <a href="https://drive.google.com/drive/folders/1FYEPkgREPPBP69wU7b2hkBBcd8jtLQxc?usp=sharing">-->
+<!--                <b>Click Here</b>-->
+<!--            </a>-->
+<!--        </p>-->
+        <hr>
+        <form class="contact_form" th:action="@{/recruitment/registered}" th:object="${user}" method="post" enctype="multipart/form-data">
+            <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
+            <div th:if="${message != null}" class="alert alert-success text-center">[[${message}]]</div>
+            <div class="row g-3" style="justify-content: center;">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="firstName">First name</label>
+                        <input type="text" id="firstName" class="form-control" th:field="*{firstName}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label cf" for="lastName">Last name</label>
+                        <input type="text" id="lastName" class="form-control" th:field="*{lastName}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Year</label>
+                        <select class="form-control" style="height: 54px" th:field="*{year}">
+                            <option value="0">--Select--</option>
+                            <option value="1st Year"> 1st Year </option>
+                            <option value="2nd Year"> 2nd Year </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="usn">USN</label>
+                        <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="dob">Date of Birth (Password for future use)</label>
+                        <input type="date" id="dob" class="form-control" th:field="*{dob}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-control" th:field="*{email}" required>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="tel">Contact</label>
+                        <input type="tel" id="tel" class="form-control" th:field="*{contact}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="github">Github ID (If you don't have, create one and paste your profile url here.)</label>
+                        <input type="url" id="github" class="form-control" th:field="*{github}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="linkedin">LinkedIn ID (If you don't have, create one and paste your profile url here.)</label>
+                        <input type="url" id="linkedin" class="form-control" th:field="*{linkedin}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="hackerrank">HackerRank ID (If you don't have, create one and paste your profile url here.)</label>
+                        <input type="text" id="hackerrank" class="form-control" th:field="*{hackerrank}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="leetcode">LeetCode ID (If you don't have, create one and paste your profile url here.)</label>
+                        <input type="text" id="leetcode" class="form-control" th:field="*{leetcode}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="language">Programming Languages Learned</label>
+                        <input type="text" id="language" class="form-control" th:field="*{pLanguage}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="projects">Number of Projects Done</label>
+                        <input type="number" id="projects" class="form-control" th:field="*{projects}" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label" for="groups">Member of Any Other Clubs (Mention the names)</label>
+                        <input type="text" id="groups" class="form-control" th:field="*{groups}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label" for="why">Why do you want to join this group?</label>
+                        <textarea maxlength="10000" cols="1000" type="text-a" id="why" class="form-control" th:field="*{why}" required></textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label" for="whys">Why do we hire you?</label>
+                        <textarea maxlength="10000" cols="1000" type="text-a" id="whys" class="form-control" th:field="*{whys}" required></textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label" for="about">What do you know about Dynamics?</label>
+                        <textarea maxlength="10000" cols="1000" type="text-a" id="about" class="form-control" th:field="*{about}" required></textarea>
+                    </div>
+                </div>
+
+
+<!--                <div class="col-md-12">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="file">Upload Resume (PDF only and Max File Size: 1MB)</label>-->
+<!--                        <input type="file" name="File" id="file" accept="application/pdf" class="form-control-file" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+<!--            <div class="col-lg-12">-->
+<!--                <input type="checkbox" id="check" name="checked" value="check">-->
+<!--                <label for="check">I hereby declare that the information given by me is correct.</label><br><br>-->
+<!--            </div>-->
+            <div class="col-lg-12 text-center">
+                <button type="submit" class="sim-btn btn-success hvr-bounce-to-top btn-lg"
+                        value="Register"><b>Register</b>
+                </button>
+                <button type="reset" class="sim-btn btn-warning hvr-bounce-to-top btn-lg" value="Clear"><b>Clear</b>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="copyrights">
+    <div class="container">
+        <div class="footer-distributed">
+            <a href="#"><img src="" alt="" /></a>
+            <div class="footer-center">
+                <p class="footer-company-name"><h1><b>Dynamics (Project Oriented Community)</b></h1></p>
+<!--                <p class="footer-links">-->
+<!--                    <a href="/dynamics">Home</a>-->
+<!--                    <a href="/dynamics/aboutus">About US</a>-->
+<!--                    <a href="/dynamics/portfolio">Portfolio</a>-->
+<!--                    <a href="/dynamics/project">Projects & Achievements</a>-->
+<!--                    <a href="/dynamics/events">Events</a>-->
+<!--                    <a href="/dynamics/recruitment">Recruitments</a>-->
+<!--                    <a href="/dynamics/team">Our Team</a>-->
+<!--                    <a href="/dynamics/contactus.">Contact Us</a>-->
+<!--                </p>-->
+                <p class="footer-company-name">All Rights Reserved. &copy; 2022  <a href="http://sit.ac.in/html/home.html">Siddaganga Institute of Technology</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/all.js"></script>
+<script type="text/javascript" src="/js/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/parallaxie.js"></script>
+<script type="text/javascript" src="/js/headline.js"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
+<script type="text/javascript" src="/js/jquery.vide.js"></script>
+
+</body>
+
+</html>

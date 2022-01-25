@@ -1,6 +1,7 @@
 package com.dynamics.website.service;
 
 import com.dynamics.website.model.CodingUser;
+import com.dynamics.website.model.User;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -66,6 +67,56 @@ public class ExcelSheetGenerator
         }
 
         FileOutputStream outputStream = new FileOutputStream(new File("F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\sheets\\codearena.xlsx"));
+        workbook.write(outputStream);
+        outputStream.close();
+
+    }
+
+    public void generateRecruitmentSheet(List<User> users) throws IOException {
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet("RECRUITMENTS_2022");
+
+        XSSFRow row;
+        int a=2;
+
+        Map<String, Object[]> sheetData = new TreeMap<String, Object[]>();
+
+        sheetData.put("1", new Object[]{"Id", "Name", "USN", "Year", "Branch", "Email", "Contact", "Github ID", "HackerRank ID", "LinkedIn ID", "LeetCode ID"});
+
+        for(User user : users) {
+            sheetData.put(Integer.toString(a), new Object[]{
+                    user.getUser_id(),
+                    user.getFirstName()+" "+user.getLastName(),
+                    user.getUsn(),
+                    user.getYear(),
+                    user.getBranch(),
+                    user.getEmail(),
+                    user.getContact(),
+                    user.getGithub(),
+                    user.getHackerrank(),
+                    user.getLinkedin(),
+                    user.getLeetcode()
+            });
+            a++;
+        }
+
+        Set<String> keyId = sheetData.keySet();
+
+        int rowId = 0;
+
+        for(String key : keyId) {
+            row = sheet.createRow(rowId++);
+            Object[] objects = sheetData.get(key);
+
+            int cellId = 0;
+
+            for(Object object : objects) {
+                Cell cell = row.createCell(cellId++);
+                cell.setCellValue(String.valueOf(object));
+            }
+        }
+
+        FileOutputStream outputStream = new FileOutputStream(new File("F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\sheets\\recruitment_2022.xlsx"));
         workbook.write(outputStream);
         outputStream.close();
 

@@ -2,6 +2,7 @@ package com.dynamics.website.service;
 
 import com.dynamics.website.model.CodingUser;
 
+import com.dynamics.website.model.User;
 import com.dynamics.website.model.Winner;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
@@ -19,23 +20,23 @@ import java.util.concurrent.ExecutionException;
 public class UserServiceFirebase
 {
 
-    public static final String COL_NAME = "code_arena";
+    public static final String COL_NAME = "recruitments_2022";
 
-    public String saveUser(CodingUser codingUser) throws InterruptedException, ExecutionException
+    public String saveUser(User user) throws InterruptedException, ExecutionException
     {
         Firestore firestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> apiFuture = firestore.collection(COL_NAME)
-                .document(codingUser.getUsn()).set(codingUser);
+                .document(user.getUsn()).set(user);
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("code_Arena");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("recruitments_2022");
         String key = reference.push().getKey();
 
-        reference.child(key).setValue(codingUser, null);
+        reference.child(key).setValue(user, null);
 
         return apiFuture.get().getUpdateTime().toString();
     }
 
-    public CodingUser getUser(String usn) throws InterruptedException, ExecutionException
+    public User getUser(String usn) throws InterruptedException, ExecutionException
     {
         Firestore firestore = FirestoreClient.getFirestore();
         DocumentReference documentReference = firestore.collection(COL_NAME).document(usn);
@@ -43,17 +44,17 @@ public class UserServiceFirebase
 
         DocumentSnapshot documentSnapshot = apiFuture.get();
 
-        CodingUser codingUser = null;
+        User user = null;
 
         if(documentSnapshot.exists()) {
-            codingUser = documentSnapshot.toObject(CodingUser.class);
-            return codingUser;
+            user = documentSnapshot.toObject(User.class);
+            return user;
         } else {
             return null;
         }
     }
 
-    public List<CodingUser> getAllUsers()
+    public List<User> getAllUsers()
     {
 
         Firestore firestore = FirestoreClient.getFirestore();
@@ -62,32 +63,32 @@ public class UserServiceFirebase
         ApiFuture<QuerySnapshot> querySnapshotApiFuture = collectionReference.get();
 
         try {
-            List<CodingUser> codingUserList = querySnapshotApiFuture.get().toObjects(CodingUser.class);
-            return codingUserList;
+            List<User> userList = querySnapshotApiFuture.get().toObjects(User.class);
+            return userList;
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return Collections.<CodingUser>emptyList();
+        return Collections.<User>emptyList();
     }
 
-    public List<Winner> getAllWinners()
-    {
-
-        Firestore firestore = FirestoreClient.getFirestore();
-
-        CollectionReference collectionReference = firestore.collection("code_arena_lists");
-        ApiFuture<QuerySnapshot> querySnapshotApiFuture = collectionReference.get();
-
-        try {
-            List<Winner> codingUserList = querySnapshotApiFuture.get().toObjects(Winner.class);
-            return codingUserList;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return Collections.<Winner>emptyList();
-    }
+//    public List<Winner> getAllWinners()
+//    {
+//
+//        Firestore firestore = FirestoreClient.getFirestore();
+//
+//        CollectionReference collectionReference = firestore.collection("code_arena_lists");
+//        ApiFuture<QuerySnapshot> querySnapshotApiFuture = collectionReference.get();
+//
+//        try {
+//            List<Winner> codingUserList = querySnapshotApiFuture.get().toObjects(Winner.class);
+//            return codingUserList;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return Collections.<Winner>emptyList();
+//    }
 
     public String deleteUser(String usn) throws InterruptedException, ExecutionException
     {
@@ -98,13 +99,13 @@ public class UserServiceFirebase
         return "Deleted";
     }
 
-    public String updateUser(CodingUser codingUser) throws InterruptedException, ExecutionException
-    {
-        Firestore firestore = FirestoreClient.getFirestore();
-
-        ApiFuture<WriteResult> writeResultApiFuture = firestore.collection(COL_NAME).document(codingUser.getUsn()).set(codingUser);
-        codingUser.setUsn(codingUser.getUsn().toUpperCase());
-
-        return writeResultApiFuture.get().getUpdateTime().toString();
-    }
+//    public String updateUser(CodingUser codingUser) throws InterruptedException, ExecutionException
+//    {
+//        Firestore firestore = FirestoreClient.getFirestore();
+//
+//        ApiFuture<WriteResult> writeResultApiFuture = firestore.collection(COL_NAME).document(codingUser.getUsn()).set(codingUser);
+//        codingUser.setUsn(codingUser.getUsn().toUpperCase());
+//
+//        return writeResultApiFuture.get().getUpdateTime().toString();
+//    }
 }

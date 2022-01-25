@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<link rel="shortcut icon" href="/mainimages/SIT-Tumkur-Logo.png" type="image/x-icon" >
+<link rel="shortcut icon" href="/mainimages/logo1.png" type="image/x-icon" >
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="/style.css">
 <link type="text/css" rel="stylesheet" href="/css/responsive.css">
@@ -36,12 +36,34 @@
 </nav>
 
 <section id="home" class="main-banner parallaxie" style="background-color: aqua;">
-    <div class="heading">
+    <div class="heading" th:each="user: ${user}">
         <h1>THANKS FOR REGISTRATION</h1>
-        <h3 class="cd-headline clip is-full-width">
-            <a style="color: white" href="https://chat.whatsapp.com/EvF7T0s7tTEHSaDW5P9NO3">Click here to Join the WhatsApp Group. After joining the group put your Name and USN there, once you join. You will also receive a confirmation mail.</a>
-        </h3>
+<!--        <h3 class="cd-headline clip is-full-width">-->
+<!--            <a style="color: white" href="https://chat.whatsapp.com/EvF7T0s7tTEHSaDW5P9NO3">Click here to Join the WhatsApp Group. After joining the group put your Name and USN there, once you join. You will also receive a confirmation mail.</a>-->
+<!--        </h3>-->
+        <h3 style="color: white;" th:text="${user.firstName} + ' ' + ${user.lastName} + ' | ' + ${user.usn} + ' | ' + ${user.year} + ' | ' + ${user.branch}"></h3>
+<!--        <h3 style="color: white;" th:text="'Usn: ' + ${user.usn}"></h3>-->
+<!--        <h3 style="color: white;" th:text="'Branch: ' + ${user.branch}"></h3>-->
+        <h3 style="color: white;" th:text="${user.email} + ' | ' + ${user.contact}"></h3>
+<!--        <h3 style="color: white;" th:text="'Phone: ' + ${user.contact}"></h3>-->
     </div>
+<!--    <div class="row" th:each="user: ${user}">-->
+<!--        <div class="col-md-12">-->
+<!--            -->
+<!--        </div>-->
+<!--        <div class="col-md-12">-->
+<!--            <h3 style="color: white;" th:text="'Usn: ' + ${user.usn}"></h3>-->
+<!--        </div>-->
+<!--        <div class="col-md-12">-->
+<!--            <h3 style="color: white;" th:text="'Branch: ' + ${user.branch}"></h3>-->
+<!--        </div>-->
+<!--        <div class="col-md-12">-->
+<!--            <h3 style="color: white;" th:text="'Branch: ' + ${user.branch}"></h3>-->
+<!--        </div>-->
+<!--        <div class="col-md-12">-->
+<!--            <h3 style="color: white;" th:text="'Phone: ' + ${user.contact}"></h3>-->
+<!--        </div>-->
+<!--    </div>-->
 </section>
 
 <div class="copyrights">
@@ -60,7 +82,7 @@
 <!--                    <a href="/dynamics/team">Our Team</a>-->
 <!--                    <a href="/dynamics/contactus">Contact Us</a>-->
 <!--                </p>-->
-                <p class="footer-company-name">All Rights Reserved. &copy; 2021  <a href="http://sit.ac.in/html/home.html">Siddaganga Institute of Technology</a></p>
+                <p class="footer-company-name">All Rights Reserved. &copy; 2022  <a href="http://sit.ac.in/html/home.html">Siddaganga Institute of Technology</a></p>
             </div>
         </div>
     </div>

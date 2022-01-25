@@ -1,7 +1,7 @@
 package com.dynamics.website.service;
 
-import com.dynamics.website.model.CodingUser;
 import com.dynamics.website.model.FileUser;
+import com.dynamics.website.model.User;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.storage.BlobId;
@@ -52,12 +52,12 @@ public class FileService
     return fileName.substring(fileName.lastIndexOf("."));
 }
 
-    public String upload(MultipartFile multipartFile, CodingUser codingUser) throws IOException{
+    public String upload(MultipartFile multipartFile, User user) throws IOException{
         FileUser fileUser = new FileUser();
         try {
             System.out.println(multipartFile);
             String fileName = multipartFile.getOriginalFilename();
-            fileName = codingUser.getUsn();
+            fileName = user.getUsn();
 
             File file = this.convertToFile(multipartFile, fileName);
             TEMP_URL = this.uploadFile(file, fileName);
