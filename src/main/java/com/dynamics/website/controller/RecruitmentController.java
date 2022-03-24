@@ -48,21 +48,22 @@ public class RecruitmentController {
 //    @RequestParam("File")MultipartFile multipartFile
 
     @RequestMapping(value = "recruitment/registered", method = RequestMethod.POST)
-    public String addUser(@Valid User user, @ModelAttribute User u, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException, IOException {
+    public String addUser(@Valid User user, @ModelAttribute User u, @RequestParam("File") MultipartFile multipartFile, BindingResult result, Model model, RedirectAttributes redirectAttributes) throws InterruptedException, ExecutionException, IOException {
 
+        String fileUrl = "";
         Random random = new Random();
         long rand = random.nextInt(100000000);
 
         User user1 = userServiceFirebase.getUser(user.getUsn().toUpperCase());
 
-//        long size = multipartFile.getSize();
-//        double sizeMB = size * 0.00000095367432;
-//
-//        if(sizeMB > 1.00) {
-//            System.out.println("Size of the file: " + sizeMB + "MB");
-//            redirectAttributes.addFlashAttribute("warning", "File Size Exceeded (Max File Size: 1MB)");
-//            return "redirect:/recruitment";
-//        }
+        long size = multipartFile.getSize();
+        double sizeMB = size * 0.00000095367432;
+
+        if(sizeMB > 1.00) {
+            System.out.println("Size of the file: " + sizeMB + "MB");
+            redirectAttributes.addFlashAttribute("warning", "File Size Exceeded (Max File Size: 1MB)");
+            return "redirect:/recruitment";
+        }
 
         if(user1 != null) {
             redirectAttributes.addFlashAttribute("warning", "Already Registered. Contact event organizer for updates.");
@@ -73,9 +74,8 @@ public class RecruitmentController {
 //        user.setSentMail(Boolean.toString(Boolean.FALSE));
         user.setUsn(user.getUsn().toUpperCase());
         user.setBranch(UserUtils.getBranchName(user.getUsn().substring(5,7).toUpperCase()));
-//        FileUser fileUser = new FileUser();
-//        fileUser.setMultipartFile(multipartFile);
-//        fileService.upload(multipartFile, user);
+        fileUrl = fileService.upload(multipartFile, user);
+        user.setFileUrl(fileUrl);
 
         userServiceFirebase.saveUser(user);
 
@@ -98,18 +98,18 @@ public class RecruitmentController {
         return "redirect:/recruitment";
     }
 
-    @RequestMapping(value = "/encryptPDF", method = RequestMethod.GET)
-    public String encryptPDF() throws IOException
-    {
-
-        List<User> users = userServiceFirebase.getAllUsers();
-
-        for(User user: users) {
-            pdfGeneratorService.encryptPDF(user);
-        }
-
-        return "redirect:/recruitment";
-    }
+//    @RequestMapping(value = "/encryptPDF", method = RequestMethod.GET)
+//    public String encryptPDF() throws IOException
+//    {
+//
+//        List<User> users = userServiceFirebase.getAllUsers();
+//
+//        for(User user: users) {
+//            pdfGeneratorService.encryptPDF(user);
+//        }
+//
+//        return "redirect:/recruitment";
+//    }
 
     @RequestMapping(value = "/sendMail", method = RequestMethod.GET)
     public String sendMail() throws ExecutionException, InterruptedException {

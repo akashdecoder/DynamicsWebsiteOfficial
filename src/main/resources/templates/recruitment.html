@@ -92,29 +92,32 @@
         <p><b>Rules and Regulations</b>
         <ul style="color: #414141;">
             <li>
-                1. Register with your college email ID or mail id with usn.
+                1. Prepare the resume according to the format provide below and then proceed with the following steps. (Second years only. First years need not have to prepare a resume.)
             </li>
             <li>
-                2. All the fields are mandatory. Don't provide wrong details.
+                2. Register with your college email ID or mail id with usn.
             </li>
             <li>
-                3. If you are facing any kinds of errors during registration, mail your details based on the form to <a href="mailto: dynamicspoc19.cse@sit.ac.in">dynamicspoc19.cse@sit.ac.in</a>.
+                3. All the fields are mandatory. Don't provide wrong details.
             </li>
             <li>
-                4. After registration please join the WhatsApp group provided on the success page and check mails frequently to receive further instructions.
+                4. If you are facing any kinds of errors during registration, mail your details based on the form to <a href="mailto: dynamicspoc19.cse@sit.ac.in">dynamicspoc19.cse@sit.ac.in</a>.
             </li>
             <li>
-                5. Visit <a href="http://www.dynamicspoc.in/">www.dynamicspoc.in</a> to know about us.
+                5. After registration please join the WhatsApp group provided on the success page and check mails frequently to receive further instructions.
+            </li>
+            <li>
+                6. Visit <a href="http://www.dynamicspoc.in/">www.dynamicspoc.in</a> to know about us.
             </li>
         </ul>
         </p>
-<!--        <hr>-->
-<!--        <p>-->
-<!--            <b style="font-size: large">Download Resume Format: </b>-->
-<!--            <a href="https://drive.google.com/drive/folders/1FYEPkgREPPBP69wU7b2hkBBcd8jtLQxc?usp=sharing">-->
-<!--                <b>Click Here</b>-->
-<!--            </a>-->
-<!--        </p>-->
+        <hr>
+        <p>
+            <b style="font-size: large">Download Resume Format: </b>
+            <a href="https://drive.google.com/drive/folders/1FYEPkgREPPBP69wU7b2hkBBcd8jtLQxc?usp=sharing">
+                <b>Click Here</b>
+            </a>
+        </p>
         <hr>
         <form class="contact_form" th:action="@{/recruitment/registered}" th:object="${user}" method="post" enctype="multipart/form-data">
             <div th:if="${warning != null}" class="alert alert-danger text-center">[[${warning}]]</div>
@@ -134,8 +137,18 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-control" style="height: 54px" th:field="*{category}" required>
+                            <option value="0">--Select--</option>
+                            <option value="Software"> Software </option>
+                            <option value="Hardware"> Hardware </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
                         <label class="form-label">Year</label>
-                        <select class="form-control" style="height: 54px" th:field="*{year}">
+                        <select class="form-control" style="height: 54px" th:field="*{year}" required>
                             <option value="0">--Select--</option>
                             <option value="1st Year"> 1st Year </option>
                             <option value="2nd Year"> 2nd Year </option>
@@ -148,12 +161,12 @@
                         <input type="text" id="usn" class="form-control" th:field="*{usn}" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="dob">Date of Birth (Password for future use)</label>
-                        <input type="date" id="dob" class="form-control" th:field="*{dob}" required>
-                    </div>
-                </div>
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="dob">Date of Birth (Password for future use)</label>-->
+<!--                        <input type="date" id="dob" class="form-control" th:field="*{dob}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
@@ -170,28 +183,17 @@
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label" for="github">Github ID (If you don't have, create one and paste your profile url here.)</label>
+                        <label class="form-label" for="github">Github ID</label>
                         <input type="url" id="github" class="form-control" th:field="*{github}" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="form-label" for="linkedin">LinkedIn ID (If you don't have, create one and paste your profile url here.)</label>
+                        <label class="form-label" for="linkedin">LinkedIn ID</label>
                         <input type="url" id="linkedin" class="form-control" th:field="*{linkedin}" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="hackerrank">HackerRank ID (If you don't have, create one and paste your profile url here.)</label>
-                        <input type="text" id="hackerrank" class="form-control" th:field="*{hackerrank}" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="form-label" for="leetcode">LeetCode ID (If you don't have, create one and paste your profile url here.)</label>
-                        <input type="text" id="leetcode" class="form-control" th:field="*{leetcode}" required>
-                    </div>
-                </div>
+
 
                 <div class="col-md-6">
                     <div class="form-group">
@@ -233,13 +235,30 @@
                     </div>
                 </div>
 
+<!--                <div class="section-title text-center">-->
+<!--                    <h1>For Software Category Only. This section is only for those who are willing to join in the Software team.</h1>-->
+<!--                </div>-->
 
-<!--                <div class="col-md-12">-->
+<!--                <div class="col-md-6">-->
 <!--                    <div class="form-group">-->
-<!--                        <label class="form-label" for="file">Upload Resume (PDF only and Max File Size: 1MB)</label>-->
-<!--                        <input type="file" name="File" id="file" accept="application/pdf" class="form-control-file" required>-->
+<!--                        <label class="form-label" for="hackerrank">HackerRank ID</label>-->
+<!--                        <input type="text" id="hackerrank" class="form-control" th:field="*{hackerrank}" required>-->
 <!--                    </div>-->
 <!--                </div>-->
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label class="form-label" for="leetcode">LeetCode ID (If you don't have, create one and paste your profile url here.)</label>-->
+<!--                        <input type="text" id="leetcode" class="form-control" th:field="*{leetcode}" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label" for="file">Upload Resume (PDF only and Max File Size: 1MB. It is only for second years)</label>
+                        <input type="file" name="File" id="file" accept="application/pdf" class="form-control-file">
+                    </div>
+                </div>
             </div>
 <!--            <div class="col-lg-12">-->
 <!--                <input type="checkbox" id="check" name="checked" value="check">-->

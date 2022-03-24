@@ -66,8 +66,6 @@ public class PDFGeneratorService {
         context.setVariable("groups",user.getGroups());
         context.setVariable("github",user.getGithub());
         context.setVariable("linkedin",user.getLinkedin());
-        context.setVariable("hackerrank",user.getHackerrank());
-        context.setVariable("leetcode",user.getLeetcode());
         context.setVariable("why",user.getWhy());
         context.setVariable("whys", user.getWhys());
         context.setVariable("about", user.getAbout());
@@ -76,20 +74,20 @@ public class PDFGeneratorService {
         return templateEngine.process("user_template", context);
     }
 
-    public void encryptPDF(User user) throws IOException {
-        File file = new File("F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\generatedPDFs\\second_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf");
-        PDDocument pdDocument = PDDocument.load(file);
-
-        AccessPermission accessPermission = new AccessPermission();
-
-        StandardProtectionPolicy standardProtectionPolicy = new StandardProtectionPolicy(user.getDob(), user.getDob().toString(), accessPermission);
-        standardProtectionPolicy.setEncryptionKeyLength(128);
-        standardProtectionPolicy.setPermissions(accessPermission);
-
-        pdDocument.protect(standardProtectionPolicy);
-        pdDocument.save("F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\generatedPDFs\\second_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf");
-        pdDocument.close();
-    }
+//    public void encryptPDF(User user) throws IOException {
+//        File file = new File("F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\generatedPDFs\\second_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf");
+//        PDDocument pdDocument = PDDocument.load(file);
+//
+//        AccessPermission accessPermission = new AccessPermission();
+//
+//        StandardProtectionPolicy standardProtectionPolicy = new StandardProtectionPolicy(user.getDob(), user.getDob().toString(), accessPermission);
+//        standardProtectionPolicy.setEncryptionKeyLength(128);
+//        standardProtectionPolicy.setPermissions(accessPermission);
+//
+//        pdDocument.protect(standardProtectionPolicy);
+//        pdDocument.save("F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\generatedPDFs\\second_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf");
+//        pdDocument.close();
+//    }
 
     public String convertToXHtml(String html) throws UnsupportedEncodingException {
         Tidy tidy = new Tidy();

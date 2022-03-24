@@ -20,7 +20,7 @@ public class FileService
 {
 
     private static String TEMP_URL = "";
-    private static final String DOWNLOAD_URL = "";
+    private static final String DOWNLOAD_URL = "https://storage.googleapis.com/dynamicspoc-95ae9.appspot.com/%s";
 
     public String uploadFile(File file, String fileName) throws IOException {
         BlobId blobId = BlobId.of("dynamicspoc-95ae9.appspot.com", fileName);
@@ -53,11 +53,9 @@ public class FileService
 }
 
     public String upload(MultipartFile multipartFile, User user) throws IOException{
-        FileUser fileUser = new FileUser();
         try {
-            System.out.println(multipartFile);
             String fileName = multipartFile.getOriginalFilename();
-            fileName = user.getUsn();
+            fileName = user.getUsn().concat(this.getExtension(fileName));
 
             File file = this.convertToFile(multipartFile, fileName);
             TEMP_URL = this.uploadFile(file, fileName);

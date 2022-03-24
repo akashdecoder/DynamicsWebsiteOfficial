@@ -40,10 +40,10 @@
             <h4 th:text="'Programming Languages:  ' + ${pLanguage}"></h4>
             <h4 th:text="'Number of Projects:  ' + ${projects}"></h4>
             <h4 th:text="'Groups:  ' + ${groups}"></h4>
-            <h4 th:text="'Github:  ' + ${github}"></h4>
-            <h4 th:text="'LinkedIn:  ' + ${linkedin}"></h4>
-            <h4 th:text="'Hackerrank:  ' + ${hackerrank}"></h4>
-            <h4 th:text="'LeetCode:  ' + ${leetcode}"></h4>
+            <h4 th:href="@{${github}}" th:text="'Github:  ' + ${github}"></h4>
+            <h4 th:href="@{${linkedin}}" th:text="'LinkedIn:  ' + ${linkedin}"></h4>
+<!--            <h4 th:text="'Hackerrank:  ' + ${hackerrank}"></h4>-->
+<!--            <h4 th:text="'LeetCode:  ' + ${leetcode}"></h4>-->
             <br>
             <p style="page-break-after: always;">.</p>
             <h4>Why Should I join Dynamics?</h4>

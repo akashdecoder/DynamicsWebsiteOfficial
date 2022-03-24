@@ -33,20 +33,24 @@ public class User {
 
     private @Getter @Setter String groups;
 
-    private @Getter @Setter String dob;
+//    private @Getter @Setter String dob;
 
     private @Getter @Setter String github;
 
     private @Getter @Setter String linkedin;
 
-    private @Getter @Setter String hackerrank;
-
-    private @Getter @Setter String leetcode;
+//    private @Getter @Setter String hackerrank;
+//
+//    private @Getter @Setter String leetcode;
 
     private @Getter @Setter String why;
 
     private @Getter @Setter String whys;
 
     private @Getter @Setter String about;
+
+    private @Getter @Setter String fileUrl;
+
+    private @Getter @Setter String category;
 
 }
