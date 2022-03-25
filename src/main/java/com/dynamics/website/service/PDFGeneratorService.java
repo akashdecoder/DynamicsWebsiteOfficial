@@ -24,11 +24,11 @@ public class PDFGeneratorService {
         String xHtml = convertToXHtml(html);
 
         if(user.getYear().equals("1st Year")) {
-            outputFolder= "F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\generatedPDFs\\first_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf";
+            outputFolder= "/Users/personal/IdeaProjects/DynamicsWebsiteOfficial/src/main/resources/generatedPDFs/first_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf";
         }
 
         if(user.getYear().equals("2nd Year")) {
-            outputFolder= "F:\\REST_Frameworks\\DynamicsWebsiteOfficial\\src\\main\\resources\\generatedPDFs\\second_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf";
+            outputFolder= "/Users/personal/IdeaProjects/DynamicsWebsiteOfficial/src/main/resources/generatedPDFs/second_years" + File.separator + user.getUsn() + "_" + user.getFirstName() + user.getLastName() +".pdf";
         }
 
         OutputStream outputStream = new FileOutputStream(outputFolder);
@@ -56,6 +56,7 @@ public class PDFGeneratorService {
 
         Context context = new Context();
         context.setVariable("name", user.getFirstName() + " " + user.getLastName());
+        context.setVariable("category", user.getCategory());
         context.setVariable("usn", user.getUsn());
         context.setVariable("branch", user.getBranch());
         context.setVariable("year", user.getYear());
@@ -69,7 +70,6 @@ public class PDFGeneratorService {
         context.setVariable("why",user.getWhy());
         context.setVariable("whys", user.getWhys());
         context.setVariable("about", user.getAbout());
-
 
         return templateEngine.process("user_template", context);
     }
