@@ -74,8 +74,11 @@ public class RecruitmentController {
 //        user.setSentMail(Boolean.toString(Boolean.FALSE));
         user.setUsn(user.getUsn().toUpperCase());
         user.setBranch(UserUtils.getBranchName(user.getUsn().substring(5,7).toUpperCase()));
-        fileUrl = fileService.upload(multipartFile, user);
-        user.setFileUrl(fileUrl);
+
+        if(user.getYear().equals("2nd Year")) {
+            fileUrl = fileService.upload(multipartFile, user);
+            user.setFileUrl(fileUrl);
+        }
 
         userServiceFirebase.saveUser(user);
 
@@ -98,18 +101,6 @@ public class RecruitmentController {
         return "redirect:/recruitment";
     }
 
-//    @RequestMapping(value = "/encryptPDF", method = RequestMethod.GET)
-//    public String encryptPDF() throws IOException
-//    {
-//
-//        List<User> users = userServiceFirebase.getAllUsers();
-//
-//        for(User user: users) {
-//            pdfGeneratorService.encryptPDF(user);
-//        }
-//
-//        return "redirect:/recruitment";
-//    }
 
     @RequestMapping(value = "/sendMail", method = RequestMethod.GET)
     public String sendMail() throws ExecutionException, InterruptedException {
